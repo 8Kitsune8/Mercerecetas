@@ -1,0 +1,17 @@
+[
+
+  {
+
+    "name": "tortilla de patatas",
+    "imgUri": "/storage/emulated/0/Download/button_enabled.png",
+    "favorite": false,
+    "note": "poner 6 huevos"
+  },
+  {
+
+    "name": "pasta carbonara",
+    "imgUri": "/storage/emulated/0/Download/button_enabled.png",
+    "favorite": false,
+    "note": "extra de queso"
+  }
+]
