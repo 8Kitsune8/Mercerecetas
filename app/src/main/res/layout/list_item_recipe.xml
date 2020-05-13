@@ -1,0 +1,47 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recipe"
+            type="app.kitsu.mercerecetas.database.Recipe" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/recipe_image"
+            android:layout_width="100dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/recipe_image_desc"
+            app:imageUri="@{recipe.imgUri}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/recipe_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:gravity="center_horizontal"
+            android:text="@{recipe.name}"
+            android:textAlignment="center"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recipe_image"
+            app:layout_constraintStart_toStartOf="@+id/recipe_image"
+            app:layout_constraintTop_toBottomOf="@id/recipe_image"
+            tools:text="@string/title_home" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
