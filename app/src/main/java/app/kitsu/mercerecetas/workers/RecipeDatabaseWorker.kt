@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.workers
+package app.kitsu.mercerecetas.workers
 
 import android.content.Context
 import android.util.Log

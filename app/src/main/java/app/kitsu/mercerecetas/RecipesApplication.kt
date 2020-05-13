@@ -21,7 +21,7 @@ import android.os.Build
 
 import androidx.work.*
 
-import com.google.samples.apps.sunflower.workers.RecipeDatabaseWorker
+import app.kitsu.mercerecetas.workers.RecipeDatabaseWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
