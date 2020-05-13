@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2019 Google Inc.
+/**Copyright (C) 2019 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,8 +11,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *//*
 
+**/
 
 package app.kitsu.mercerecetas
 
@@ -29,31 +28,30 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 //TODO delete if not needed
-*/
-/**
+ /*
+*
  * Override application to setup background work via WorkManager
- *//*
+ */
 
 class RecipesApplication : Application() {
 
     val applicationScope = CoroutineScope(Dispatchers.Default)
-    */
-/**
+/*
      * onCreate is called before the first screen is shown to the user.
      *
      * Use it to setup any background tasks, running expensive setup operations in a background
      * thread to avoid delaying app start.
-     *//*
 
+*/
     override fun onCreate() {
         super.onCreate()
         delayedInit()
     }
 
-    */
+
 /**
      * Setup WorkManager background job to 'fetch' new network data daily.
-     *//*
+ */
 
     private fun setupRecurringWork(){
         val constraints = Constraints.Builder()
@@ -71,7 +69,7 @@ class RecipesApplication : Application() {
         val repeatingRequest = OneTimeWorkRequestBuilder<RecipeDatabaseWorker>()
                 //.setConstraints(constraints)
                 .build()
-        WorkManager.getInstance().enqueueUniqueWork(RecipeDatabaseWorker.WORK_NAME, ExistingWorkPolicy.KEEP,repeatingRequest)
+        WorkManager.getInstance(this).enqueueUniqueWork(RecipeDatabaseWorker.WORK_NAME, ExistingWorkPolicy.KEEP,repeatingRequest)
     }
 
     fun delayedInit(){
@@ -81,4 +79,3 @@ class RecipesApplication : Application() {
         }
     }
 }
-*/

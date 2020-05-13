@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.database.RecipeDatabaseDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,10 +39,25 @@ class HomeViewModel(
      */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val nights = database.getAllRecipes()
+    val recipes = database.getAllRecipes()
 
-    private val _text = MutableLiveData<String>().apply {
+  /*  private val _recipes = MutableLiveData<List<Recipe>>()
+
+    var recipes: LiveData<List<Recipe>>
+        get() = _recipes
+
+
+    init {
+        recipes = initDatabase()
+    }
+*//*    private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
     }
-    val text: LiveData<String> = _text
+    val text: LiveData<String> = _text*//*
+
+private fun initDatabase() : LiveData<List<Recipe>>{
+
+    return database.getAllRecipes()
+}*/
+
 }
