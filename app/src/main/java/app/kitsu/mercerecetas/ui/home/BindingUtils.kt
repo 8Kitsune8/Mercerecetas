@@ -2,9 +2,7 @@ package app.kitsu.mercerecetas.ui.home
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import app.kitsu.mercerecetas.R
-import app.kitsu.mercerecetas.database.Recipe
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
@@ -16,7 +14,11 @@ import java.io.File
 fun bindImageFromUrl(view: ImageView, imageUri: String?) {
     if (!imageUri.isNullOrEmpty()) {
         Glide.with(view.context)
-            .load(File(imageUri))
+            .load(
+                if(imageUri.contains("ic_")){
+                    view.context.resources.getIdentifier(imageUri,"drawable", view.context.packageName)
+                }else File(imageUri)
+            )
             //this is to manage different images in case of loading or broken image
                 .apply(
                     RequestOptions()
@@ -25,6 +27,8 @@ fun bindImageFromUrl(view: ImageView, imageUri: String?) {
             //.transition(DrawableTransitionOptions.withCrossFade())
             .into(view)
     }
+
+
 }
 
     //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
@@ -34,4 +38,6 @@ fun bindRecyclerView(recyclerView: RecyclerView, properties: List<Recipe>?){
     val adapter = recyclerView.adapter as RecipeAdapter
     adapter.submitList(properties)
 }*/
+
+
 
