@@ -103,4 +103,6 @@ dependencies {
 
     // needed for InstantTaskExecutorRule to use it when need observer for LiveData testing
     androidTestImplementation "androidx.arch.core:core-testing:2.0.0"
+
+    implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
 }

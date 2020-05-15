@@ -41,6 +41,11 @@ class HomeViewModel(
 
     val recipes = database.getAllRecipes()
 
+    private var filterList : ArrayList<Recipe>? = null
+
+
+
+
   /*  private val _recipes = MutableLiveData<List<Recipe>>()
 
     var recipes: LiveData<List<Recipe>>

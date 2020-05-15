@@ -1,7 +1,13 @@
 package app.kitsu.mercerecetas.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,12 +16,31 @@ import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.databinding.ListItemRecipeBinding
 
-class RecipeAdapter : ListAdapter<Recipe, RecipeAdapter.ViewHolder>(RecipeDiffCallback()) {
+class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filterable {
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+    private var filteredList: ArrayList<Recipe>? = null
+    private var context: Context? = null
+    private var recycleFilter: RecycleFilter? = null
+
+    var data = listOf<Recipe>()
+    set(value){
+        field = value
+        notifyDataSetChanged()
+    }
+/*
+    constructor(context: Context, list: ArrayList<Recipe>): this() {
+        this.listFull = list
+        this.list = list
+        this.context = context
+    }*/
+
+
+
+/*    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
-    }
+    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -24,21 +49,77 @@ class RecipeAdapter : ListAdapter<Recipe, RecipeAdapter.ViewHolder>(RecipeDiffCa
             LayoutInflater.from(parent.context), R.layout.list_item_recipe, parent, false))
     }
 
-    class ViewHolder constructor(val binding: ListItemRecipeBinding) : RecyclerView.ViewHolder(binding.root){
+/*    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var imgItemImage: ImageView? = null
+        var txtItemName: TextView? = null
+
+        init {
+            imgItemImage = view.findViewById(R.id.recipe_image) as ImageView
+            txtItemName = view.findViewById(R.id.recipe_name)
+            view.setOnClickListener {  }
+        }
+    }*/
+      class ViewHolder constructor(val binding: ListItemRecipeBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Recipe) {
-            binding.recipe = item
+             binding.recipe = item
 
-            binding.executePendingBindings()
+             binding.executePendingBindings()
+         }
+
+         companion object {
+             fun from(parent: ViewGroup): ViewHolder {
+                 val layoutInflater = LayoutInflater.from(parent.context)
+                 val binding = ListItemRecipeBinding.inflate(layoutInflater, parent, false)
+                 return ViewHolder(binding)
+             }
+         }
+
+        public fun setSearchResult(result: List<Recipe>){
+            binding.recipe
         }
+    }
 
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemRecipeBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+    override fun getItemCount(): Int {
+       return data.size
+    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = data[position]
+        holder.bind(item)
+    }
+
+    override fun getFilter(): Filter {
+
+        if(recycleFilter == null){
+            recycleFilter = RecycleFilter()
+        }
+       return recycleFilter as RecycleFilter
+    }
+
+    inner class RecycleFilter: Filter(){
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            var results: FilterResults = FilterResults()
+            if(constraint != null && constraint.isNotEmpty()){
+                var localList: ArrayList<Recipe> = ArrayList<Recipe>()
+                for (i: Int in 0..data?.size?.minus(1) as Int) {
+                    if(data?.get(i)?.name?.toLowerCase().contains(constraint.toString().toLowerCase())){
+                        localList.add(data?.get(i) as Recipe)
+                    }
+                }
+                results.values = localList
+                results.count = localList.size
+            } else {
+                results.values = data
+                results.count = itemCount
             }
+            return results
         }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            filteredList = results?.values as ArrayList<Recipe>
+            notifyDataSetChanged()
+        }
+
     }
 }
 
