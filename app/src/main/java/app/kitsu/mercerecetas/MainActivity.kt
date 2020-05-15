@@ -23,7 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 22
+    val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 22
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    MY_PERMISSIONS_REQUEST_READ_CONTACTS
+                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
                 )
 
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<String>, grantResults: IntArray
     ) {
         when (requestCode) {
-            MY_PERMISSIONS_REQUEST_READ_CONTACTS -> {
+            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     // permission was granted, yay! Do the
@@ -105,52 +105,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-/*    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main_menu, menu)
-        // Associate searchable configuration with the SearchView
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
-            //setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-
-        }
-        return true
-    }
-
-        fun onQueryTextChange(query: String?): Boolean {
-            // Here is where we are going to implement the filter logic
-            return false
-        }
-
-        fun onQueryTextSubmit(query: String?): Boolean {
-            return false
-        }*/
-
-/*    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-
-
-        val searchItem = menu.findItem(R.id.app_bar_search)
-        val searchView = searchItem.actionView as SearchView
-        searchView.setQueryHint("Search View Hint")
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // task HERE
-                return false
-            }
-
-        })
-
-        return true
-    }*/
-
-    }
+}
 
 

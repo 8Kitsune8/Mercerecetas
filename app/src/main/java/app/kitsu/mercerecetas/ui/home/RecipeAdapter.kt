@@ -1,16 +1,12 @@
 package app.kitsu.mercerecetas.ui.home
 
-import android.content.Context
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
@@ -36,6 +32,10 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filter
     }
 
 /*
+Podria ser util. con esto quizas se puede usar el ListAdapter (uno simple que ya tiene RecyclerView) en vez del RecyclerView sin mas,
+ya que ahora lo uso para poder setear y usar la lista de datos y filtrarla y con esto ya lo seteariamos,
+permitiendo eliminar el set value actual y activar el callback de nuevo
+
     constructor(context: Context, list: ArrayList<Recipe>): this() {
         this.listFull = list
         this.list = list
@@ -44,11 +44,6 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filter
 
 
 
-/*    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
-    }*/
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
@@ -56,16 +51,7 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filter
             LayoutInflater.from(parent.context), R.layout.list_item_recipe, parent, false))
     }
 
-/*    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var imgItemImage: ImageView? = null
-        var txtItemName: TextView? = null
 
-        init {
-            imgItemImage = view.findViewById(R.id.recipe_image) as ImageView
-            txtItemName = view.findViewById(R.id.recipe_name)
-            view.setOnClickListener {  }
-        }
-    }*/
       class ViewHolder constructor(val binding: ListItemRecipeBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Recipe) {
@@ -81,10 +67,6 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filter
                  return ViewHolder(binding)
              }
          }
-
-        public fun setSearchResult(result: List<Recipe>){
-            binding.recipe
-        }
     }
 
     override fun getItemCount(): Int {
