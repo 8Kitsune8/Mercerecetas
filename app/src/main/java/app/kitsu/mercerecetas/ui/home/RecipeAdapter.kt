@@ -19,15 +19,22 @@ import app.kitsu.mercerecetas.databinding.ListItemRecipeBinding
 class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filterable {
 
 
-    private var filteredList: ArrayList<Recipe>? = null
-    private var context: Context? = null
+
+
+    private var controlFirstTime: Boolean = true
     private var recycleFilter: RecycleFilter? = null
+    private var fullList : List<Recipe>? = null
 
     var data = listOf<Recipe>()
     set(value){
         field = value
+        if(controlFirstTime) {
+            fullList = value
+            controlFirstTime = false
+        }
         notifyDataSetChanged()
     }
+
 /*
     constructor(context: Context, list: ArrayList<Recipe>): this() {
         this.listFull = list
@@ -99,25 +106,27 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filter
     inner class RecycleFilter: Filter(){
         override fun performFiltering(constraint: CharSequence?): FilterResults {
             var results: FilterResults = FilterResults()
+
             if(constraint != null && constraint.isNotEmpty()){
                 var localList: ArrayList<Recipe> = ArrayList<Recipe>()
-                for (i: Int in 0..data?.size?.minus(1) as Int) {
-                    if(data?.get(i)?.name?.toLowerCase().contains(constraint.toString().toLowerCase())){
-                        localList.add(data?.get(i) as Recipe)
+
+                for (i: Int in 0..fullList?.size?.minus(1) as Int) {
+                    if(fullList?.get(i)?.name?.toLowerCase()?.contains(constraint.toString().toLowerCase()) as Boolean){
+                        localList.add(fullList?.get(i) as Recipe)
                     }
                 }
                 results.values = localList
-                results.count = localList.size
+                results.count = localList?.size
             } else {
-                results.values = data
-                results.count = itemCount
+                results.values = fullList
+                results.count = fullList?.size as Int
             }
             return results
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            filteredList = results?.values as ArrayList<Recipe>
-            notifyDataSetChanged()
+            data = results?.values as ArrayList<Recipe>
+            //notifyDataSetChanged()
         }
 
     }

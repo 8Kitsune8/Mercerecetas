@@ -3,10 +3,13 @@ package app.kitsu.mercerecetas.ui.home
 import android.app.SearchManager
 import android.app.Service
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.Filter
 import android.widget.SearchView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +20,7 @@ import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.database.RecipeDatabase
 import app.kitsu.mercerecetas.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -24,6 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val adapter = RecipeAdapter()
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -67,6 +72,9 @@ class HomeFragment : Fragment() {
         val manager = GridLayoutManager(activity, 2)
         binding.recipeList.layoutManager = manager
 
+ /*       binding.toolbar.setTitleTextColor(ContextCompat.getColor(application,R.color.colorPrimaryDark))
+        (this.activity)?.setActionBar(toolbar)
+        binding.toolbar.title = "testing"*/
         setHasOptionsMenu(true)
 
 
@@ -130,7 +138,7 @@ class HomeFragment : Fragment() {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
+
         inflater.inflate(R.menu.main_menu, menu)
 
         val searchItem: MenuItem? = menu?.findItem(R.id.app_bar_search)
@@ -163,5 +171,6 @@ class HomeFragment : Fragment() {
             }
 
         })*/
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
