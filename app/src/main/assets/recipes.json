@@ -1,17 +1,27 @@
 [
 
   {
-
     "name": "tortilla de patatas",
     "imgUri": "ic_home_black_24dp",
     "favorite": false,
     "note": "poner 6 huevos"
   },
   {
-
     "name": "pasta carbonara",
     "imgUri": "/storage/emulated/0/Download/pasta.jpg",
     "favorite": false,
     "note": "extra de queso"
+  },
+  {
+    "name": "garbanzos con verduras",
+    "imgUri": "/storage/emulated/0/Download/garbanzos_verduras.jpg",
+    "favorite": false,
+    "note": "mas pimenton menos curcuma"
+  },
+  {
+    "name": "garbanzos con coliflor",
+    "imgUri": "/storage/emulated/0/Download/garbanzos_coliflor.jpg",
+    "favorite": false,
+    "note": "garbanzos ya cocidos"
   }
 ]

@@ -43,7 +43,17 @@ class HomeViewModel(
 
     private var filterList : ArrayList<Recipe>? = null
 
+    private val _navigateToSelectedRecipe = MutableLiveData<Recipe>()
+    val navigateToSelectedRecipe: LiveData<Recipe>
+    get() = _navigateToSelectedRecipe
 
+    fun displayRecipeDetails(recipe: Recipe) {
+        _navigateToSelectedRecipe.value = recipe
+    }
+
+    fun displayRecipeDetailsComplete() {
+        _navigateToSelectedRecipe.value = null
+    }
 
 
   /*  private val _recipes = MutableLiveData<List<Recipe>>()

@@ -2,6 +2,7 @@ package app.kitsu.mercerecetas.ui.home
 
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
@@ -12,7 +13,7 @@ import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.databinding.ListItemRecipeBinding
 
-class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filterable {
+class RecipeAdapter(private val onClickListener: OnClickListener) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filterable {
 
 
 
@@ -74,7 +75,11 @@ permitiendo eliminar el set value actual y activar el callback de nuevo
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(item)
+        }
         holder.bind(item)
+
     }
 
     override fun getFilter(): Filter {
@@ -111,6 +116,9 @@ permitiendo eliminar el set value actual y activar el callback de nuevo
             //notifyDataSetChanged()
         }
 
+    }
+    class OnClickListener(val clickListener: (recipe : Recipe) -> Unit ) {
+        fun onClick(recipe : Recipe) = clickListener(recipe)
     }
 }
 
