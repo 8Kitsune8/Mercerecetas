@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
 
         //initialize RecyclerView adapter
-       val adapter = RecipeAdapter(RecipeAdapter.OnClickListener{
+        adapter = RecipeAdapter(RecipeAdapter.OnClickListener{
            homeViewModel.displayRecipeDetails(it)
            homeViewModel.displayRecipeDetailsComplete()
        })
@@ -100,6 +100,6 @@ class HomeFragment : Fragment() {
 
         })
 
-       // super.onCreateOptionsMenu(menu, inflater)
+       super.onCreateOptionsMenu(menu, inflater)
     }
 }
