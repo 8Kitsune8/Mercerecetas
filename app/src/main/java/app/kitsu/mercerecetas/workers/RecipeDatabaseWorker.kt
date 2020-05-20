@@ -26,8 +26,10 @@ import app.kitsu.mercerecetas.utils.RECIPE_DATA_FILENAME
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
+import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 
 class RecipeDatabaseWorker(
     context: Context,
@@ -42,10 +44,10 @@ class RecipeDatabaseWorker(
                 JsonReader(inputStream.reader()).use { jsonReader ->
                     val recipeType = object : TypeToken<List<Recipe>>() {}.type
                     val recipeList: List<Recipe> = Gson().fromJson(jsonReader, recipeType)
-
                     val database = RecipeDatabase.getInstance(applicationContext)
-                    database.recipeDatabaseDao.insertAll(recipeList)
-
+                    withContext(Dispatchers.IO) {
+                        database.recipeDatabaseDao.insertAll(recipeList)
+                    }
                     Result.success()
                 }
             }
