@@ -12,7 +12,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="190dp">
+        android:layout_height="200dp"
+        android:paddingEnd="@dimen/card_side_padding"
+        android:paddingStart="@dimen/card_side_padding"
+        >
 
 
         <ImageView
@@ -21,6 +24,7 @@
             android:layout_height="170dp"
             android:contentDescription="@string/recipe_image_desc"
             android:scaleType="centerCrop"
+
             app:imageFromUri="@{recipe.imgUri}"
             app:layout_constraintBottom_toTopOf="@id/recipe_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +35,16 @@
         <TextView
             android:id="@+id/recipe_name"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
+            android:background="@color/secondaryColor"
             android:gravity="center_horizontal"
             android:text="@{recipe.name}"
             android:textAlignment="center"
+            android:paddingTop="@dimen/text_padding"
+
             app:layout_constraintBottom_toBottomOf="@id/recipe_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/recipe_image"
+            app:layout_constraintStart_toStartOf="@id/recipe_image"
             app:layout_constraintTop_toBottomOf="@+id/recipe_image"
             tools:text="Spagetti" />
     </androidx.constraintlayout.widget.ConstraintLayout>

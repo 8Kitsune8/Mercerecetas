@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.RecipeDatabase
 import app.kitsu.mercerecetas.databinding.FragmentHomeBinding
@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         // This is necessary so that the binding can observe LiveData updates.
         binding.setLifecycleOwner(this)
 
-        val manager = GridLayoutManager(activity, 2)
+        val manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recipeList.layoutManager = manager
 
 
@@ -100,6 +100,6 @@ class HomeFragment : Fragment() {
 
         })
 
-        super.onCreateOptionsMenu(menu, inflater)
+       // super.onCreateOptionsMenu(menu, inflater)
     }
 }

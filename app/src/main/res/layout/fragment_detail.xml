@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
-                android:paddingBottom="40dp"
+                android:paddingBottom="?attr/actionBarSize"
                 android:text="@{viewModel.selectedRecipe.name}"
                 android:textColor="#de000000"
                 android:textSize="36sp"
