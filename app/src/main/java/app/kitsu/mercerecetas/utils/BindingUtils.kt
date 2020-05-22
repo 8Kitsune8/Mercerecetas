@@ -1,10 +1,12 @@
 package app.kitsu.mercerecetas.utils
 
+import android.os.Build
+import android.text.Html
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
 import app.kitsu.mercerecetas.R
-import app.kitsu.mercerecetas.utils.convertDurationToFormatted
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
@@ -34,12 +36,16 @@ fun bindImageFromUrl(view: ImageView, imageUri: String?) {
 }
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 @BindingAdapter("recipeDurationFormatted")
 fun TextView.setSleepDurationFormatted(item: Int) {
-    item?.let { text = context.resources.getString(
+    item?.let {
+        val formText = context.resources.getString(
         R.string.display_recipe_time,
         convertDurationToFormatted(it, context.resources)
-    ) }
+    )
+        text = Html.fromHtml(formText, Html.FROM_HTML_MODE_LEGACY)
+    }
 }
 
 
