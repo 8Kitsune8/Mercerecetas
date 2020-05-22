@@ -12,8 +12,15 @@ class DetailViewModel(recipe: Recipe, app: Application) : AndroidViewModel(app) 
     val selectedRecipe: LiveData<Recipe>
         get() = _selectedRecipe
 
+
+
+    private val _title = MutableLiveData<String>()
+    val title: LiveData<String>
+        get() = _title
+
     init {
         _selectedRecipe.value = recipe
     }
 
+    fun updateActionBarTitle(title: String?) = _title.postValue(title)
 }

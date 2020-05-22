@@ -12,16 +12,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:paddingEnd="@dimen/card_side_padding"
-        android:paddingStart="@dimen/card_side_padding"
+        android:layout_height="185dp"
+
+        android:layout_margin="@dimen/card_side_margin"
         >
 
 
         <ImageView
             android:id="@+id/recipe_image"
             android:layout_width="0dp"
-            android:layout_height="170dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/recipe_image_desc"
             android:scaleType="centerCrop"
 
@@ -40,7 +40,7 @@
             android:gravity="center_horizontal"
             android:text="@{recipe.name}"
             android:textAlignment="center"
-            android:paddingTop="@dimen/text_padding"
+
 
             app:layout_constraintBottom_toBottomOf="@id/recipe_image"
             app:layout_constraintEnd_toEndOf="@id/recipe_image"

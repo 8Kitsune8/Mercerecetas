@@ -76,8 +76,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
         inflater.inflate(R.menu.search_menu, menu)
