@@ -1,25 +1,18 @@
 package app.kitsu.mercerecetas
 
 import android.Manifest
-import android.app.SearchManager
-import android.content.Context
+
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import app.kitsu.mercerecetas.ui.detail.DetailFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -107,6 +100,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp()
+    }
 }
 
 
