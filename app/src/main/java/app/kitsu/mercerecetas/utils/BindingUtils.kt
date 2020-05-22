@@ -1,8 +1,10 @@
-package app.kitsu.mercerecetas.ui.home
+package app.kitsu.mercerecetas.utils
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import app.kitsu.mercerecetas.R
+import app.kitsu.mercerecetas.utils.convertDurationToFormatted
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
@@ -30,6 +32,16 @@ fun bindImageFromUrl(view: ImageView, imageUri: String?) {
 
 
 }
+
+
+@BindingAdapter("recipeDurationFormatted")
+fun TextView.setSleepDurationFormatted(item: Int) {
+    item?.let { text = context.resources.getString(
+        R.string.display_recipe_time,
+        convertDurationToFormatted(it, context.resources)
+    ) }
+}
+
 
     //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
 // This will make automatically observe the LiveData for this list in RecyclerView

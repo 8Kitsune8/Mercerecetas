@@ -49,17 +49,41 @@
                 app:imageFromUri="@{viewModel.selectedRecipe.imgUri}"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
-            <TextView
-                android:id="@+id/recipe_title_text"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center_horizontal"
-                android:paddingBottom="?attr/actionBarSize"
-                android:text="@{viewModel.selectedRecipe.name}"
-                android:textColor="#de000000"
-                android:textSize="36sp"
-                tools:text="Pasta Carbonara with Cheese" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/recipe_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="textStart"
+                    android:gravity="start"
+                    android:paddingBottom="?attr/actionBarSize"
+                    android:text="@{viewModel.displayRecipeMode}"
+                    android:textColor="#de000000"
+                    android:textSize="20sp"
+                    tools:text="Modo: Vapor"
+                     />
+
+                <TextView
+                    android:id="@+id/recipe_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    android:layout_marginTop="16dp"
+                    android:paddingBottom="?attr/actionBarSize"
+                    app:recipeDurationFormatted="@{viewModel.selectedRecipe.time}"
+                    android:textColor="#de000000"
+                    android:textSize="20sp"
+                    tools:text="Tiempo: 30 min"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

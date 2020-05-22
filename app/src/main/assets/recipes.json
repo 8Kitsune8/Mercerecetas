@@ -4,24 +4,32 @@
     "name": "tortilla de patatas",
     "imgUri": "ic_home_black_24dp",
     "favorite": false,
-    "note": "poner 6 huevos"
+    "note": "poner 6 huevos",
+    "cookMode": "Vapor",
+    "time": 30
   },
   {
     "name": "pasta carbonara",
     "imgUri": "ic_pasta_carbonara",
     "favorite": false,
-    "note": "extra de queso"
+    "note": "extra de queso",
+    "cookMode": "Vapor",
+    "time": 20
   },
   {
     "name": "garbanzos con verduras",
     "imgUri": "/storage/emulated/0/Download/garbanzos_verduras.jpg",
     "favorite": false,
-    "note": "mas pimenton menos curcuma"
+    "note": "mas pimenton menos curcuma",
+    "cookMode": "Potaje",
+    "time": 90
   },
   {
     "name": "garbanzos con coliflor",
     "imgUri": "/storage/emulated/0/Download/garbanzos_coliflor.jpg",
     "favorite": false,
-    "note": "garbanzos ya cocidos"
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
   }
 ]

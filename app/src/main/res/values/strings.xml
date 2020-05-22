@@ -4,4 +4,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="recipe_image_desc">recipe image</string>
+    <string name="display_recipe_time">Tiempo: %s</string>
+
+    <string name="display_recipe_mode">&lt;b>Modo:&lt;/b> %s</string>
+
+    <string name="minutes_length">%d min</string>
+    <string name="hours_length">%d h</string>
+
 </resources>
+<!--<string name="display_recipe_mode">Modo: %s</string>-->
+    <!--    <string name="display_recipe_mode">&lt;b>Modo:&lt;/b>%s</string>-->

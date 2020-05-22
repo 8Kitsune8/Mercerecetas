@@ -22,6 +22,12 @@ data class Recipe (
     var favorite: Boolean = false,
 
     @ColumnInfo(name = "recipe_tips")
-    var note: String = ""
+    var note: String = "",
+
+    @ColumnInfo(name = "cook_mode")
+    var cookMode: String = "",
+
+    @ColumnInfo(name = "time")
+    var time: Int = 15
 
 ) : Parcelable
