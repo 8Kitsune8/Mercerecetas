@@ -19,7 +19,7 @@ fun bindImageFromUrl(view: ImageView, imageUri: String?) {
     if (!imageUri.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(
-                if(imageUri.contains("ic_")){
+                if(imageUri.contains("dr_")){
                     view.context.resources.getIdentifier(imageUri,"drawable", view.context.packageName)
                 }else File(imageUri)
             )

@@ -1,7 +1,7 @@
 [
 
   {
-    "name": "tortilla de patatas",
+    "name": "Tortilla de Patatas",
     "imgUri": "ic_home_black_24dp",
     "favorite": false,
     "note": "poner 6 huevos",
@@ -9,15 +9,15 @@
     "time": 30
   },
   {
-    "name": "pasta carbonara",
-    "imgUri": "ic_pasta_carbonara",
+    "name": "Pasta Carbonara",
+    "imgUri": "dr_pasta_carbonara",
     "favorite": false,
     "note": "extra de queso",
     "cookMode": "Vapor",
     "time": 20
   },
   {
-    "name": "garbanzos con verduras",
+    "name": "Garbanzos con Verduras",
     "imgUri": "/storage/emulated/0/Download/garbanzos_verduras.jpg",
     "favorite": false,
     "note": "mas pimenton menos curcuma",
@@ -25,11 +25,379 @@
     "time": 90
   },
   {
-    "name": "garbanzos con coliflor",
+    "name": "Garbanzos con Coliflor",
     "imgUri": "/storage/emulated/0/Download/garbanzos_coliflor.jpg",
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Conejo a las Finas Hierbas",
+    "imgUri": "dr_conejo_hierbas_bacon",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Conejo a las Finas Hierbas",
+    "imgUri": "dr_conejo_hierbas_bacon",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Habas a la Catalana",
+    "imgUri": "dr_habas_catalana",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Macarrones con Salmon y Espárragos",
+    "imgUri": "dr_macarrones_salmon",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Arroz con Setas",
+    "imgUri": "dr_arroz_setas",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Bacalao en Sanfaina",
+    "imgUri": "dr_bacalao_sanfaina",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Paella",
+    "imgUri": "dr_paella",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Ternera Estofada",
+    "imgUri": "dr_ternera_estofada",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Calamares Rellenos",
+    "imgUri": "dr_calamares_rellenos",
+    "favorite": false,
+    "note": "garbanzos ya cocidos",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Ternera a la Jardinera",
+    "imgUri": "dr_ternera_jardinera",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Calamares en Salsa",
+    "imgUri": "dr_calamares_salsa",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Garbanzos con Costilla",
+    "imgUri": "dr_garbanzos_costilla",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Arroz con Verduras",
+    "imgUri": "dr_arroz_verduras",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Lentejas al Curry",
+    "imgUri": "dr_lentejas_curry",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Tallarines a la Putanesca",
+    "imgUri": "dr_tallarines_putanesca",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Solomillo de Cerdo con Mandarina",
+    "imgUri": "dr_cerdo_mandarina",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Bacalao al Ajoarriero",
+    "imgUri": "dr_bacalao_ajo",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Garbanzos Estofados",
+    "imgUri": "dr_garbanzos_estof",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Lentejas Estofadas",
+    "imgUri": "dr_lentejas_estof",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Manitas de Cerdo con Judías",
+    "imgUri": "dr_manitas_judia",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Ensaladilla Rusa",
+    "imgUri": "dr_ensaladilla_rusa",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Costilla de Cerdo Lacada",
+    "imgUri": "dr_costilla_lacada",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Costilla de Cerdo Lacada",
+    "imgUri": "dr_costilla_lacada",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Sepia Estofada con Patatas",
+    "imgUri": "dr_sepia_estof",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Ternera al Curry",
+    "imgUri": "dr_ternera_curry",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Macarrones a l'Arrabiatta",
+    "imgUri": "dr_macarrones_arrab",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Cazuela",
+    "time": 120
+  },
+  {
+    "name": "Risotto a la Parmesana",
+    "imgUri": "dr_risotto",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Patatas a la Riojana",
+    "imgUri": "dr_patatas_riojana",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Pasta con Brócoli",
+    "imgUri": "dr_pasta_brocoli",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Arroz Calsodo Mediterráneo",
+    "imgUri": "dr_arroz_caldoso_med",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Bacalao Dorado",
+    "imgUri": "dr_bacalao_dorado",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Fabada Asturiana",
+    "imgUri": "dr_fabada",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Tarta de Queso",
+    "imgUri": "dr_tarta_queso",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Merluza al Horno",
+    "imgUri": "dr_merluza_horno",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Peras al Vino",
+    "imgUri": "dr_peras_vino",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Arroz Negro con Sepia",
+    "imgUri": "dr_arroz_negro",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Spagetti con Bacon",
+    "imgUri": "dr_spagetti_bacon",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Trinxat de la Cerdanya",
+    "imgUri": "dr_trinxat",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Revuelto de Espárragos con Patatas",
+    "imgUri": "dr_revuelto_espar",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Espirales a la Provenzal",
+    "imgUri": "dr_espirales_prov",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Bizcocho",
+    "imgUri": "dr_bizcocho",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Bizcocho de Yogur",
+    "imgUri": "dr_bizcocho_yogur",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Tarta de Manzana",
+    "imgUri": "dr_tarta_manzana",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Pollo al Chilindrón",
+    "imgUri": "dr_pollo_chil",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Albóndigas con Guisantes",
+    "imgUri": "dr_albondigas",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
+    "time": 120
+  },
+  {
+    "name": "Fileos con Costilla",
+    "imgUri": "dr_fideos_costilla",
+    "favorite": false,
+    "note": "",
+    "cookMode": "Vapor",
     "time": 120
   }
 ]

@@ -16,8 +16,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingTop="@dimen/margin_normal"
+        android:paddingBottom="?attr/actionBarSize"
         tools:context=".ui.home.HomeFragment"
-        android:background="@color/primaryLightColor">
+        android:background="@color/secondaryColor"
+        android:paddingLeft="@dimen/margin_normal">
 
 
 
@@ -26,9 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"
-            android:padding="6dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

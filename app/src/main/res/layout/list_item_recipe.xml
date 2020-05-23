@@ -10,18 +10,18 @@
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="175dp"
 
-        android:layout_margin="@dimen/card_side_margin"
+        android:padding="@dimen/card_side_padding"
         >
 
 
         <ImageView
             android:id="@+id/recipe_image"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:contentDescription="@string/recipe_image_desc"
             android:scaleType="centerCrop"
 
@@ -34,18 +34,18 @@
 
         <TextView
             android:id="@+id/recipe_name"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:background="@color/secondaryColor"
-            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/recipe_image"
+
+
+            android:background="@color/secondaryColorOpaque"
+            android:gravity="center"
             android:text="@{recipe.name}"
             android:textAlignment="center"
-
-
-            app:layout_constraintBottom_toBottomOf="@id/recipe_image"
-            app:layout_constraintEnd_toEndOf="@id/recipe_image"
-            app:layout_constraintStart_toStartOf="@id/recipe_image"
-            app:layout_constraintTop_toBottomOf="@+id/recipe_image"
+            android:textStyle="bold"
+            android:textSize="@dimen/item_text_size"
+            android:textColor="@color/primaryTextColor"
             tools:text="Spagetti" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
