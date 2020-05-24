@@ -10,6 +10,11 @@
 
     <string name="minutes_length">%dmin</string>
     <string name="hours_length">%dh</string>
+    <string name="show_all_text">Mostrar Todo</string>
+    <string name="carnes_item">Carnes</string>
+    <string name="pescados_item">Pescados</string>
+    <string name="arroces_item">Arroces</string>
+    <string name="pastas_item">Pastas</string>
 
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->

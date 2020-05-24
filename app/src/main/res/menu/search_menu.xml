@@ -7,4 +7,34 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/overflowMenu"
+        android:title=""
+        android:icon="@drawable/ic_filter_list_white_24dp"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/show_all"
+                android:title="@string/show_all_text"
+                android:icon="@drawable/ic_home_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/show_beef"
+                android:title="@string/carnes_item"
+                />
+            <item
+                android:id="@+id/show_fish"
+                android:title="@string/pescados_item"
+                />
+            <item
+                android:id="@+id/show_rice"
+                android:title="@string/arroces_item"
+                />
+            <item
+                android:id="@+id/show_pasta"
+                android:title="@string/pastas_item"
+                />
+        </menu>
+    </item>
 </menu>
