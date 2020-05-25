@@ -1,24 +1,31 @@
 package app.kitsu.mercerecetas.ui.home
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.database.RecipeDatabaseDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import app.kitsu.mercerecetas.database.RecipeFilter
+import kotlinx.coroutines.*
+
 
 class HomeViewModel(
     dataSource: RecipeDatabaseDao,
     application: Application
 ) : ViewModel() {
 
+
     /**
      * Hold a reference to SleepDatabase via SleepDatabaseDao.
      */
     val database = dataSource
+
+
+    lateinit var recipes : LiveData<List<Recipe>>
+
+    private var _filteredRecipes = MutableLiveData<List<Recipe>>()
+    val filteredrecipes : LiveData<List<Recipe>>
+    get() = _filteredRecipes
+
 
     /** Coroutine variables */
 
@@ -26,7 +33,7 @@ class HomeViewModel(
      * viewModelJob allows us to cancel all coroutines started by this ViewModel.
      */
     private var viewModelJob = Job()
-
+    var liveDataMerger: MediatorLiveData<List<Recipe>> = MediatorLiveData<List<Recipe>>()
     /**
      * A [CoroutineScope] keeps track of all coroutines started by this ViewModel.
      *
@@ -39,7 +46,17 @@ class HomeViewModel(
      */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val recipes = database.getAllRecipes()
+
+   init {
+       recipes = getAllRecipes()
+
+       liveDataMerger.addSource(recipes,  Observer { value ->
+           liveDataMerger.setValue(value) } )
+
+       liveDataMerger.addSource(filteredrecipes,  Observer { value ->
+           liveDataMerger.setValue(value) } )
+   }
+
 
     private var filterList : ArrayList<Recipe>? = null
 
@@ -47,32 +64,37 @@ class HomeViewModel(
     val navigateToSelectedRecipe: LiveData<Recipe>
     get() = _navigateToSelectedRecipe
 
+
     fun displayRecipeDetails(recipe: Recipe) {
         _navigateToSelectedRecipe.value = recipe
     }
+
 
     fun displayRecipeDetailsComplete() {
         _navigateToSelectedRecipe.value = null
     }
 
 
-  /*  private val _recipes = MutableLiveData<List<Recipe>>()
 
-    var recipes: LiveData<List<Recipe>>
-        get() = _recipes
+    fun updateRecipeList(filter: RecipeFilter){
 
-
-    init {
-        recipes = initDatabase()
+       if(filter == RecipeFilter.SHOW_ALL) {
+           liveDataMerger.setValue(recipes.value)
+       } else {
+           uiScope.launch {
+           _filteredRecipes.value =  getFilteredRecipes(filter)
+           }
+       }
     }
-*//*    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    private fun getAllRecipes(): LiveData<List<Recipe>> {
+        return database.getAllRecipes()
     }
-    val text: LiveData<String> = _text*//*
 
-private fun initDatabase() : LiveData<List<Recipe>>{
-
-    return database.getAllRecipes()
-}*/
+    private suspend fun getFilteredRecipes(filter: RecipeFilter): List<Recipe> {
+        return withContext(Dispatchers.IO) {
+            database.getFiltered(filter.value)
+        }
+    }
 
 }

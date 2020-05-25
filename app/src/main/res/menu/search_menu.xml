@@ -20,7 +20,7 @@
                 app:showAsAction="never"/>
 
             <item
-                android:id="@+id/show_beef"
+                android:id="@+id/show_meat"
                 android:title="@string/carnes_item"
                 />
             <item

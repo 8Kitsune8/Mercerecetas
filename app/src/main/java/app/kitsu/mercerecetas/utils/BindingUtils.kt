@@ -6,7 +6,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import app.kitsu.mercerecetas.R
+import app.kitsu.mercerecetas.database.Recipe
+import app.kitsu.mercerecetas.ui.home.RecipeAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
@@ -49,12 +52,15 @@ fun TextView.setSleepDurationFormatted(item: Int) {
 }
 
 
-    //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
+/*    //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
 // This will make automatically observe the LiveData for this list in RecyclerView
-/*@BindingAdapter("listData")
+@BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, properties: List<Recipe>?){
     val adapter = recyclerView.adapter as RecipeAdapter
-    adapter.submitList(properties)
+        if (properties != null) {
+           // adapter.data = properties
+            adapter.submitList(properties)
+        }
 }*/
 
 

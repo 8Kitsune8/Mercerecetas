@@ -1,7 +1,17 @@
 package app.kitsu.mercerecetas.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+
+enum class RecipeFilter(val value: String) {
+    SHOW_MEAT("meat"),
+    SHOW_FISH("fish"),
+    SHOW_RICE("rice"),
+    SHOW_PASTA("pasta"),
+    SHOW_VEGETABLES("vegetables"),
+    SHOW_ALL("all")
+}
 
 @Dao
 interface RecipeDatabaseDao {
@@ -20,5 +30,8 @@ interface RecipeDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(recipes: List<Recipe>)
+
+    @Query("SELECT * FROM recipe_table WHERE type = :filter")
+    fun getFiltered(filter: String): List<Recipe>
 
 }

@@ -6,7 +6,8 @@
     "favorite": false,
     "note": "poner 6 huevos",
     "cookMode": "Vapor",
-    "time": 30
+    "time": 30,
+    "type": "vegetables"
   },
   {
     "name": "Pasta Carbonara",
@@ -14,7 +15,8 @@
     "favorite": false,
     "note": "extra de queso",
     "cookMode": "Vapor",
-    "time": 20
+    "time": 20,
+    "type": "pasta"
   },
   {
     "name": "Garbanzos con Verduras",
@@ -22,7 +24,8 @@
     "favorite": false,
     "note": "mas pimenton menos curcuma",
     "cookMode": "Potaje",
-    "time": 90
+    "time": 90,
+    "type": "vegetables"
   },
   {
     "name": "Garbanzos con Coliflor",
@@ -30,7 +33,8 @@
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
-    "time": 120
+    "time": 120,
+    "type": "vegetables"
   },
   {
     "name": "Conejo a las Finas Hierbas",
@@ -38,15 +42,8 @@
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
-    "time": 120
-  },
-  {
-    "name": "Conejo a las Finas Hierbas",
-    "imgUri": "dr_conejo_hierbas_bacon",
-    "favorite": false,
-    "note": "garbanzos ya cocidos",
-    "cookMode": "Cazuela",
-    "time": 120
+    "time": 120,
+    "type": "meat"
   },
   {
     "name": "Habas a la Catalana",
@@ -54,7 +51,8 @@
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
-    "time": 120
+    "time": 120,
+    "type": "vegetables"
   },
   {
     "name": "Macarrones con Salmon y Espárragos",
@@ -62,7 +60,8 @@
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
-    "time": 120
+    "time": 120,
+    "type": "pasta"
   },
   {
     "name": "Arroz con Setas",
@@ -70,7 +69,8 @@
     "favorite": false,
     "note": "garbanzos ya cocidos",
     "cookMode": "Cazuela",
-    "time": 120
+    "time": 120,
+    "type": "rice"
   },
   {
     "name": "Bacalao en Sanfaina",

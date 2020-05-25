@@ -27,6 +27,9 @@ data class Recipe (
     @ColumnInfo(name = "cook_mode")
     var cookMode: String = "",
 
+    @ColumnInfo(name = "type")
+    var type: String = "",
+
     @ColumnInfo(name = "time")
     var time: Int = 15
 

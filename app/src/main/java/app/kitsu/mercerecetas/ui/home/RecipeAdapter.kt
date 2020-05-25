@@ -1,6 +1,7 @@
 package app.kitsu.mercerecetas.ui.home
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,41 +9,16 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.databinding.ListItemRecipeBinding
 
-class RecipeAdapter(private val onClickListener: OnClickListener) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>(), Filterable {
+class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe,RecipeAdapter.ViewHolder>(RecipeDiffCallback()), Filterable {
 
-
-
-
-    private var controlFirstTime: Boolean = true
     private var recycleFilter: RecycleFilter? = null
     private var fullList : List<Recipe>? = null
-
-    var data = listOf<Recipe>()
-    set(value){
-        field = value
-        if(controlFirstTime) {
-            fullList = value
-            controlFirstTime = false
-        }
-        notifyDataSetChanged()
-    }
-
-/*
-Podria ser util. con esto quizas se puede usar el ListAdapter (uno simple que ya tiene RecyclerView) en vez del RecyclerView sin mas,
-ya que ahora lo uso para poder setear y usar la lista de datos y filtrarla y con esto ya lo seteariamos,
-permitiendo eliminar el set value actual y activar el callback de nuevo
-
-    constructor(context: Context, list: ArrayList<Recipe>): this() {
-        this.listFull = list
-        this.list = list
-        this.context = context
-    }*/
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -70,11 +46,8 @@ permitiendo eliminar el set value actual y activar el callback de nuevo
          }
     }
 
-    override fun getItemCount(): Int {
-       return data.size
-    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.itemView.setOnClickListener{
             onClickListener.onClick(item)
         }
@@ -88,6 +61,10 @@ permitiendo eliminar el set value actual y activar el callback de nuevo
             recycleFilter = RecycleFilter()
         }
        return recycleFilter as RecycleFilter
+    }
+
+    fun setCurrentFullList(fullCurList: List<Recipe>){
+        fullList = fullCurList
     }
 
     inner class RecycleFilter: Filter(){
@@ -112,8 +89,8 @@ permitiendo eliminar el set value actual y activar el callback de nuevo
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            data = results?.values as ArrayList<Recipe>
-            //notifyDataSetChanged()
+            val res = results?.values as ArrayList<Recipe>
+            submitList(res)
         }
 
     }
