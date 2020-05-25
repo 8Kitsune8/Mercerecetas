@@ -52,7 +52,7 @@ fun TextView.setSleepDurationFormatted(item: Int) {
 }
 
 
-/*    //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
+    //using binding adapter to initialise RecipeAdapter with the list of Recipe objects.
 // This will make automatically observe the LiveData for this list in RecyclerView
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, properties: List<Recipe>?){
@@ -60,8 +60,10 @@ fun bindRecyclerView(recyclerView: RecyclerView, properties: List<Recipe>?){
         if (properties != null) {
            // adapter.data = properties
             adapter.submitList(properties)
+            //This is to setup current full list used to filter it
+            adapter.setCurrentFullList(properties)
         }
-}*/
+}
 
 
 

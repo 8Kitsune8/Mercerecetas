@@ -53,12 +53,6 @@ class HomeFragment : Fragment() {
            homeViewModel.displayRecipeDetailsComplete()
        })
 
-            homeViewModel.liveDataMerger.observe(viewLifecycleOwner, Observer {
-                it?.let { adapter.submitList(it)
-                    //This is to setup current full list used to filter it
-                    adapter.setCurrentFullList(it)}
-            })
-
         binding.recipeList.adapter = adapter
 
         homeViewModel.navigateToSelectedRecipe.observe(viewLifecycleOwner, Observer {
