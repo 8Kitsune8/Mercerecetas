@@ -15,6 +15,7 @@
     <string name="pescados_item">Pescados</string>
     <string name="arroces_item">Arroces</string>
     <string name="pastas_item">Pastas</string>
+    <string name="legumbres_item">Legumbres</string>
 
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->

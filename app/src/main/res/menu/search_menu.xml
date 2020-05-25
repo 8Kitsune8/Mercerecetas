@@ -16,24 +16,34 @@
             <item
                 android:id="@+id/show_all"
                 android:title="@string/show_all_text"
-                android:icon="@drawable/ic_home_black_24dp"
+                android:icon="@drawable/ic_tray"
                 app:showAsAction="never"/>
 
             <item
                 android:id="@+id/show_meat"
+                android:icon="@drawable/ic_drumstick_bite_solid"
                 android:title="@string/carnes_item"
+                app:showAsAction="never"
                 />
             <item
                 android:id="@+id/show_fish"
+                android:icon="@drawable/ic_fish_solid"
                 android:title="@string/pescados_item"
                 />
             <item
                 android:id="@+id/show_rice"
+                android:icon="@drawable/ic_seedling_solid"
                 android:title="@string/arroces_item"
                 />
             <item
                 android:id="@+id/show_pasta"
+                android:icon="@drawable/ic_pasta"
                 android:title="@string/pastas_item"
+                />
+            <item
+                android:id="@+id/show_vegetables"
+                android:icon="@drawable/ic_beans"
+                android:title="@string/legumbres_item"
                 />
         </menu>
     </item>
