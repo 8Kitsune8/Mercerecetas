@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.selection.SelectionPredicates
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StableIdKeyProvider
+import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
@@ -21,6 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: RecipeAdapter
     private lateinit var homeViewModel: HomeViewModel
+    private var tracker: SelectionTracker<Long>? = null
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,6 +38,9 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater,container, false)
 
         val application = requireNotNull(this.activity).application
+
+        if(savedInstanceState != null)
+            tracker?.onRestoreInstanceState(savedInstanceState)
 
         // Create an instance of the ViewModel Factory.
         val dataSource = RecipeDatabase.getInstance(application).recipeDatabaseDao
@@ -69,6 +77,17 @@ class HomeFragment : Fragment() {
         val manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recipeList.layoutManager = manager
 
+        tracker = SelectionTracker.Builder<Long>(
+            "selection-1",
+            binding.recipeList,
+            StableIdKeyProvider(binding.recipeList),
+            MyLookup(binding.recipeList),
+            StorageStrategy.createLongStorage()
+        ).withSelectionPredicate(
+            SelectionPredicates.createSelectAnything()
+        ).build()
+
+        adapter.setTracker(tracker)
 
         setHasOptionsMenu(true)
 
@@ -115,4 +134,11 @@ class HomeFragment : Fragment() {
          }
         return true
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if(outState != null)
+            tracker?.onSaveInstanceState(outState)
+    }
+
 }

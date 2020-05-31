@@ -2,12 +2,17 @@ package app.kitsu.mercerecetas.ui.home
 
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.RelativeLayout
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.selection.ItemDetailsLookup
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +24,16 @@ class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<
 
     private var recycleFilter: RecycleFilter? = null
     private var fullList : List<Recipe>? = null
+    private var tracker: SelectionTracker<Long>? = null
 
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).recipeId
+        //return position.toLong()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -37,6 +51,14 @@ class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<
              binding.executePendingBindings()
          }
 
+          fun getItemDetails() : ItemDetailsLookup.ItemDetails<Long> =
+              object : ItemDetailsLookup.ItemDetails<Long>() {
+                  override fun getSelectionKey(): Long? = itemId
+
+                  override fun getPosition(): Int = adapterPosition
+
+              }
+
          companion object {
              fun from(parent: ViewGroup): ViewHolder {
                  val layoutInflater = LayoutInflater.from(parent.context)
@@ -48,10 +70,21 @@ class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.itemView.setOnClickListener{
-            onClickListener.onClick(item)
-        }
+
         holder.bind(item)
+        val parent = holder.itemView as RelativeLayout
+        if(tracker!!.isSelected(getItem(position).recipeId)) {
+            parent.background = ColorDrawable(
+                Color.parseColor("#80deea")
+            )
+        } else {
+            // Reset color to white if not selected
+            parent.background = ColorDrawable(Color.parseColor("#ffa726"))
+        }
+
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(item,tracker)
+        }
 
     }
 
@@ -95,7 +128,15 @@ class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<
 
     }
     class OnClickListener(val clickListener: (recipe : Recipe) -> Unit ) {
-        fun onClick(recipe : Recipe) = clickListener(recipe)
+        fun onClick(recipe : Recipe,tracker: SelectionTracker<Long>?){
+            if (!tracker!!.hasSelection()){
+                clickListener(recipe)
+            }
+        }
+    }
+
+    fun setTracker(tracker: SelectionTracker<Long>?) {
+        this.tracker = tracker
     }
 }
 
