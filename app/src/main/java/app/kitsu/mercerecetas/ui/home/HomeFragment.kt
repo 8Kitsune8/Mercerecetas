@@ -4,6 +4,7 @@ package app.kitsu.mercerecetas.ui.home
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -88,6 +89,14 @@ class HomeFragment : Fragment() {
         ).build()
 
         adapter.setTracker(tracker)
+
+        tracker?.addObserver(
+            object: SelectionTracker.SelectionObserver<Long>() {
+                override fun onSelectionChanged() {
+                    val nItems:Int? = tracker?.selection?.size()
+                }
+            })
+
 
         setHasOptionsMenu(true)
 

@@ -21,3 +21,5 @@ package app.kitsu.mercerecetas.utils
  */
 const val DATABASE_NAME = "recipe_database"
 const val RECIPE_DATA_FILENAME = "recipes.json"
+const val INGREDIENT_DATA_FILENAME = "ingredients.json"
+const val REC_INGR_QTTY_DATA_FILENAME = "recipe_ingredient_qtty.json"

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Patata",
+    "group": "Hortaliza",
+    "type": "u"
+  },
+  {
+    "name": "Tomate",
+    "group": "Hortaliza",
+    "type": "u"
+  },
+  {
+    "name": "Cebolla",
+    "group": "Hortaliza",
+    "type": "u"
+  },
+  {
+    "name": "Macarrones Pluma Rallados",
+    "group": "Pasta",
+    "type": "gr"
+  },
+  {
+    "name": "Espirales",
+    "group": "Pasta",
+    "type": "gr"
+  },
+  {
+    "name": "Garbanzos",
+    "group": "Legumbre",
+    "type": "gr"
+  },
+  {
+    "name": "Nata",
+    "group": "Lacteo",
+    "type": "unidad"
+  },
+  {
+    "name": "Caldo Carne",
+    "group": "Carne",
+    "type": "l"
+  },
+  {
+    "name": "Bacon",
+    "group": "Carne",
+    "type": "gr"
+  },
+  {
+    "name": "Huevo",
+    "group": "Huevo",
+    "type": "u"
+  },
+  {
+    "name": "Pimentón",
+    "group": "Condimento",
+    "type": "u"
+  }
+]

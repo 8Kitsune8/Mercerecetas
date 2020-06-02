@@ -6,9 +6,7 @@ import androidx.room.CoroutinesRoom
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import app.kitsu.mercerecetas.database.Recipe
-import app.kitsu.mercerecetas.database.RecipeDatabase
-import app.kitsu.mercerecetas.database.RecipeDatabaseDao
+import app.kitsu.mercerecetas.database.*
 import app.kitsu.mercerecetas.utils.OneTimeObserver
 import kotlinx.coroutines.runBlocking
 
@@ -20,11 +18,22 @@ import java.io.IOException
 class RecipeDatabaseTest {
 
     private lateinit var recipeDao: RecipeDatabaseDao
+    private lateinit var ingredientDao: IngredientDao
+    private lateinit var recipeIngredientQttyDao: RecipeIngredientQttyDao
     private lateinit var db: RecipeDatabase
 
     private val recipeA = Recipe(1,"tortilla", "",true,"6 huevos")
     private val recipeB = Recipe(2,"spagetti", "",true,"400g")
     private val recipeC = Recipe(3,"fabada", "",true,"1 chorizo")
+
+    private val ingredientA = Ingredient("Huevo","huevo","u")
+    private val ingredientB = Ingredient("Patata","hortaliza","u")
+    private val ingredientC = Ingredient("Alubias","legumbre","gr")
+
+    private val recIngQttyA = RecipeIngredientQuantity(1, 1,"Huevo",6)
+    private val recIngQttyB= RecipeIngredientQuantity(2, 1,"Patata",4)
+    private val recIngQttyC = RecipeIngredientQuantity(3, 2,"Huevo",1)
+    private val recIngQttyD = RecipeIngredientQuantity(4, 3,"Alubias",300)
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -39,6 +48,8 @@ class RecipeDatabaseTest {
             .allowMainThreadQueries()
             .build()
         recipeDao = db.recipeDatabaseDao
+        ingredientDao = db.ingredientDao
+        recipeIngredientQttyDao = db.recipeIngredientQttyDao
     }
 
 
@@ -68,7 +79,7 @@ class RecipeDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun addAndGetNightList(){
+    fun addAndGetRecipetList(){
         runBlocking {
             recipeDao.insertAll((listOf(recipeA,recipeB,recipeC)))
             val recipe = recipeDao.get(2)
@@ -83,5 +94,22 @@ class RecipeDatabaseTest {
     fun <T> LiveData<T>.observeOnce(onChangeHandler: (T) -> Unit) {
         val observer = OneTimeObserver(handler = onChangeHandler)
         observe(observer, observer)
+    }
+
+    @Test
+    fun addAndGetIngredientsFromRecipes(){
+        runBlocking {
+            recipeDao.insertAll((listOf(recipeA,recipeB,recipeC)))
+            ingredientDao.insertAll(listOf(ingredientA,ingredientB,ingredientC))
+            recipeIngredientQttyDao.insertAll(listOf(recIngQttyA,recIngQttyB,recIngQttyC,recIngQttyD))
+
+
+            val ingredientList = recipeIngredientQttyDao.getFilteredByRecipe(listOf(1,2)).observeOnce { listQtty ->
+                Assert.assertEquals("Huevo", listQtty[0].ingredientName)
+                Assert.assertEquals(7, listQtty[0].ingredientQtty)
+                Assert.assertEquals("Patata", listQtty[1].ingredientName)
+                Assert.assertEquals(4, listQtty[1].ingredientQtty)
+            }
+        }
     }
 }

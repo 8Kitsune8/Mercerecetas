@@ -36,7 +36,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 
-class RecipeDatabaseWorker(
+class IngredientDatabaseWorker(
     context: Context,
     workerParams: WorkerParameters
 ) : CoroutineWorker(context, workerParams) {
@@ -45,8 +45,8 @@ class RecipeDatabaseWorker(
 
     override suspend fun doWork(): Result = coroutineScope {
         try {
-            loadJson(RECIPE_DATA_FILENAME)
-            //loadJson(INGREDIENT_DATA_FILENAME)
+            //loadJson(RECIPE_DATA_FILENAME)
+            loadJson(INGREDIENT_DATA_FILENAME)
             //loadJson(REC_INGR_QTTY_DATA_FILENAME)
         } catch (ex: Exception) {
             Log.e(WORK_NAME, "Error seeding database", ex)
@@ -89,6 +89,6 @@ class RecipeDatabaseWorker(
     }
 
     companion object {
-        val WORK_NAME = RecipeDatabaseWorker::class.java.simpleName
+        val WORK_NAME = IngredientDatabaseWorker::class.java.simpleName
     }
 }

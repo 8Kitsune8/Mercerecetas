@@ -1,7 +1,6 @@
 package app.kitsu.mercerecetas.database
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 enum class RecipeFilter(val value: String) {

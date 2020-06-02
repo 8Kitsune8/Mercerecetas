@@ -1,0 +1,37 @@
+[
+  {
+    "recipeId": "1",
+    "ingredientName": "Patata",
+    "ingredientQtty": 6
+  },
+  {
+    "recipeName": "1",
+    "ingredientName": "Huevo",
+    "ingredientQtty": 6
+  },
+  {
+    "recipeName": "1",
+    "ingredientName": "Cebolla",
+    "ingredientQtty": 1
+  },
+  {
+    "recipeName": "43",
+    "ingredientName": "Espirales",
+    "ingredientQtty": 500
+  },
+  {
+    "recipeName": "43",
+    "ingredientName": "Espirales",
+    "ingredientQtty": 500
+  },
+  {
+    "recipeName": "43",
+    "ingredientName": "Nata",
+    "ingredientQtty": 1
+  },
+  {
+    "recipeName": "43",
+    "ingredientName": "Bacon",
+    "ingredientQtty": 150
+  }
+]

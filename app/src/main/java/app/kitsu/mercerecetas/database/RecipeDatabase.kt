@@ -8,13 +8,17 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import app.kitsu.mercerecetas.utils.DATABASE_NAME
+import app.kitsu.mercerecetas.workers.IngredientDatabaseWorker
 import app.kitsu.mercerecetas.workers.RecipeDatabaseWorker
+import app.kitsu.mercerecetas.workers.RecipeIngrQttyDatabaseWorker
 
 
-@Database(entities = [Recipe::class], version = 1, exportSchema = false)
+@Database(entities = [Recipe::class, Ingredient::class, RecipeIngredientQuantity::class], version = 1, exportSchema = false)
 abstract class RecipeDatabase : RoomDatabase() {
 
     abstract val recipeDatabaseDao: RecipeDatabaseDao
+    abstract val ingredientDao: IngredientDao
+    abstract val recipeIngredientQttyDao: RecipeIngredientQttyDao
 
     companion object {
 
@@ -41,6 +45,10 @@ abstract class RecipeDatabase : RoomDatabase() {
                         super.onCreate(db)
                         val request = OneTimeWorkRequestBuilder<RecipeDatabaseWorker>().build()
                         WorkManager.getInstance(context).enqueue(request)
+                        val requestIngr = OneTimeWorkRequestBuilder<IngredientDatabaseWorker>().build()
+                        WorkManager.getInstance(context).enqueue(requestIngr)
+                        val requestQtty = OneTimeWorkRequestBuilder<RecipeIngrQttyDatabaseWorker>().build()
+                        WorkManager.getInstance(context).enqueue(requestQtty)
                     }
                 })
                 .build()
