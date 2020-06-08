@@ -2,43 +2,59 @@
   {
     "recIngQttyId" : 1,
     "recipeId": "1",
-    "ingredientName": "Patata",
-    "ingredientQtty": 6
+    "ingredientQtty": 6,
+    "ingredient":{"name": "Patata",
+      "group": "Hortaliza",
+      "type": "u"}
   },
   {
     "recIngQttyId" : 2,
     "recipeId": "1",
-    "ingredientName": "Huevo",
+    "ingredient":  {
+      "name": "Huevo",
+      "group": "Huevo",
+      "type": "u"
+    },
     "ingredientQtty": 6
   },
   {
     "recIngQttyId" : 3,
     "recipeId": "1",
-    "ingredientName": "Cebolla",
+    "ingredient":   {
+      "name": "Cebolla",
+      "group": "Hortaliza",
+      "type": "u"
+    },
     "ingredientQtty": 1
   },
   {
     "recIngQttyId" : 4,
     "recipeId": "43",
-    "ingredientName": "Espirales",
+    "ingredient":   {
+      "name": "Espirales",
+      "group": "Pasta",
+      "type": "gr"
+    },
     "ingredientQtty": 500
   },
   {
     "recIngQttyId" : 5,
     "recipeId": "43",
-    "ingredientName": "Espirales",
-    "ingredientQtty": 500
+    "ingredient":   {
+      "name": "Nata",
+      "group": "Lacteo",
+      "type": "unidad"
+    },
+    "ingredientQtty": 1
   },
   {
     "recIngQttyId" : 6,
     "recipeId": "43",
-    "ingredientName": "Nata",
-    "ingredientQtty": 1
-  },
-  {
-    "recIngQttyId" : 7,
-    "recipeId": "43",
-    "ingredientName": "Bacon",
+    "ingredient":   {
+      "name": "Bacon",
+      "group": "Carne",
+      "type": "gr"
+    },
     "ingredientQtty": 150
   }
 ]

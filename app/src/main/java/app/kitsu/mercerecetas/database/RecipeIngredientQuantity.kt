@@ -1,14 +1,10 @@
 package app.kitsu.mercerecetas.database
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 
 @Entity(tableName = "recipe_ingredient_quantity_table",
-        foreignKeys = arrayOf(ForeignKey(entity = Recipe::class, parentColumns = ["recipeId"], childColumns = ["recipe_id"]),
-            ForeignKey(entity = Ingredient::class, parentColumns = ["i_id"], childColumns = ["ingredient_name"])))
+        foreignKeys = arrayOf(ForeignKey(entity = Recipe::class, parentColumns = ["recipeId"], childColumns = ["recipe_id"])))
 data class RecipeIngredientQuantity (
 
     @PrimaryKey(autoGenerate = true)
@@ -18,9 +14,11 @@ data class RecipeIngredientQuantity (
     @ColumnInfo(name = "recipe_id")
     var recipeId: Long = 0,
 
-    @ColumnInfo(name = "ingredient_name")
-    var ingredientName: String = "",
 
     @ColumnInfo(name = "ingredient_quantity")
-    var ingredientQtty: Int = 0
-    )
+    var ingredientQtty: Int = 0,
+
+    @Embedded(prefix = "ing_") val ingredient: Ingredient?
+
+
+)

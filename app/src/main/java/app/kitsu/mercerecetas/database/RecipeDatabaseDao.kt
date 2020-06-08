@@ -2,6 +2,8 @@ package app.kitsu.mercerecetas.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
+
 
 enum class RecipeFilter(val value: String) {
     SHOW_MEAT("meat"),
@@ -32,5 +34,9 @@ interface RecipeDatabaseDao {
 
     @Query("SELECT * FROM recipe_table WHERE type = :filter")
     fun getFiltered(filter: String): List<Recipe>
+
+    @RawQuery
+    fun generateBackup(query: SupportSQLiteQuery?): Int
+
 
 }

@@ -32,10 +32,10 @@ class RecipeDatabaseTest {
     private val ingredientB = Ingredient("Patata","hortaliza","u")
     private val ingredientC = Ingredient("Alubias","legumbre","gr")
 
-    private val recIngQttyA = RecipeIngredientQuantity(1, 1,"Huevo",6)
-    private val recIngQttyB= RecipeIngredientQuantity(2, 1,"Patata",4)
-    private val recIngQttyC = RecipeIngredientQuantity(3, 2,"Huevo",1)
-    private val recIngQttyD = RecipeIngredientQuantity(4, 3,"Alubias",300)
+    private val recIngQttyA = RecipeIngredientQuantity(1, 1,6,ingredientA)
+    private val recIngQttyB= RecipeIngredientQuantity(2, 1,4,ingredientB)
+    private val recIngQttyC = RecipeIngredientQuantity(3, 2,1,ingredientA)
+    private val recIngQttyD = RecipeIngredientQuantity(4, 3,300, ingredientC)
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -132,11 +132,13 @@ class RecipeDatabaseTest {
             ingredientDao.insertAll(listOf(ingredientA,ingredientB,ingredientC))
             recipeIngredientQttyDao.insertAll(listOf(recIngQttyA,recIngQttyB,recIngQttyC,recIngQttyD))
 
-            recipeIngredientQttyDao.getFilteredByRecipe(listOf(1,2)).observeOnce { listQtty ->
-                Assert.assertEquals("Huevo", listQtty[0].ingredientName)
-                Assert.assertEquals(7, listQtty[0].ingredientQtty)
-                Assert.assertEquals("Patata", listQtty[1].ingredientName)
-                Assert.assertEquals(4, listQtty[1].ingredientQtty)
+            recipeIngredientQttyDao.getFilteredByRecipe(listOf(1,2,3)).observeOnce { listQtty ->
+                Assert.assertEquals("Huevo", listQtty[1].ingredient?.name)
+                Assert.assertEquals(7, listQtty[1].ingredientQtty)
+                Assert.assertEquals("u", listQtty[1].ingredient?.type)
+                Assert.assertEquals("Patata", listQtty[0].ingredient?.name)
+                Assert.assertEquals(4, listQtty[0].ingredientQtty)
+                Assert.assertEquals("gr", listQtty[2].ingredient?.type)
             }
         }
     }

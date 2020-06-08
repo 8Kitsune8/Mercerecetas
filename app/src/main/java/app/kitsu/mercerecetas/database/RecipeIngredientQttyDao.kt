@@ -15,9 +15,11 @@ interface RecipeIngredientQttyDao {
     @Query("SELECT * from recipe_ingredient_quantity_table WHERE recIngQttyId = :key")
     fun get(key: Long): RecipeIngredientQuantity?
 
-    @Query("SELECT recIngQttyId, recipe_id, ingredient_name, SUM(ingredient_quantity) as ingredient_quantity FROM recipe_ingredient_quantity_table " +
+    @Query("SELECT recIngQttyId, recipe_id, SUM(ingredient_quantity) as ingredient_quantity, ing_i_id, ing_group , ing_type FROM recipe_ingredient_quantity_table " +
+//            "INNER JOIN ingredient_table ON ingredient_table.i_id = recipe_ingredient_quantity_table.ingredient_name " +
             "WHERE recipe_id IN (:filter) " +
-            "GROUP BY ingredient_name" )
+            "GROUP BY ing_i_id " +
+            "ORDER BY recIngQttyId ASC")
     fun getFilteredByRecipe(filter: List<Long>): LiveData<List<RecipeIngredientQuantity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

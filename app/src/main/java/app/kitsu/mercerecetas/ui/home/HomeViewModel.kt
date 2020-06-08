@@ -2,6 +2,9 @@ package app.kitsu.mercerecetas.ui.home
 
 import android.app.Application
 import androidx.lifecycle.*
+import androidx.sqlite.db.SimpleSQLiteQuery
+import androidx.sqlite.db.SupportSQLiteQuery
+import androidx.sqlite.db.SupportSQLiteQueryBuilder
 import app.kitsu.mercerecetas.database.*
 import kotlinx.coroutines.*
 
@@ -53,6 +56,10 @@ class HomeViewModel(
 
        liveDataMerger.addSource(filteredrecipes,  Observer { value ->
            liveDataMerger.setValue(value) } )
+
+       uiScope.launch {
+         //  generateBackup()
+       }
    }
 
 
@@ -92,6 +99,13 @@ class HomeViewModel(
     private suspend fun getFilteredRecipes(filter: RecipeFilter): List<Recipe> {
         return withContext(Dispatchers.IO) {
             database.getFiltered(filter.value)
+        }
+    }
+
+    private suspend fun generateBackup() {
+        withContext(Dispatchers.IO){
+            val query = SimpleSQLiteQuery("pragma wal_checkpoint(full)")
+            database.generateBackup(query)
         }
     }
 }
