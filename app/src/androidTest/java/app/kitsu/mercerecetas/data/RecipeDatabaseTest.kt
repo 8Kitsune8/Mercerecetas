@@ -1,5 +1,6 @@
 package app.kitsu.mercerecetas.data
 
+import android.database.sqlite.SQLiteConstraintException
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.room.CoroutinesRoom
@@ -11,6 +12,7 @@ import app.kitsu.mercerecetas.utils.OneTimeObserver
 import kotlinx.coroutines.runBlocking
 
 import org.junit.*
+import org.junit.rules.ExpectedException
 import org.junit.runner.RunWith
 import java.io.IOException
 
@@ -96,15 +98,41 @@ class RecipeDatabaseTest {
         observe(observer, observer)
     }
 
+    @Test(expected = SQLiteConstraintException::class)
+    fun checkForeingKeyConstraintEx(){
+        runBlocking {
+            recipeDao.insertAll((listOf(recipeA, recipeB, recipeC)))
+            recipeIngredientQttyDao.insertAll(
+                listOf(
+                    recIngQttyA,
+                    recIngQttyB,
+                    recIngQttyC,
+                    recIngQttyD
+                )
+            )
+
+        }
+    }
+
     @Test
-    fun addAndGetIngredientsFromRecipes(){
+    fun addAndGetIngredient() {
+        runBlocking {
+            recipeDao.insertAll((listOf(recipeA, recipeB, recipeC)))
+            ingredientDao.insertAll(listOf(ingredientA, ingredientB, ingredientC))
+        }
+        ingredientDao.getAllIngredients().observeOnce { listIngr ->
+            Assert.assertEquals(listOf<Ingredient>(ingredientA, ingredientB, ingredientC),listIngr)
+        }
+    }
+
+    @Test
+    fun addAndGetIngredientsQttiesFromRecipes(){
         runBlocking {
             recipeDao.insertAll((listOf(recipeA,recipeB,recipeC)))
             ingredientDao.insertAll(listOf(ingredientA,ingredientB,ingredientC))
             recipeIngredientQttyDao.insertAll(listOf(recIngQttyA,recIngQttyB,recIngQttyC,recIngQttyD))
 
-
-            val ingredientList = recipeIngredientQttyDao.getFilteredByRecipe(listOf(1,2)).observeOnce { listQtty ->
+            recipeIngredientQttyDao.getFilteredByRecipe(listOf(1,2)).observeOnce { listQtty ->
                 Assert.assertEquals("Huevo", listQtty[0].ingredientName)
                 Assert.assertEquals(7, listQtty[0].ingredientQtty)
                 Assert.assertEquals("Patata", listQtty[1].ingredientName)

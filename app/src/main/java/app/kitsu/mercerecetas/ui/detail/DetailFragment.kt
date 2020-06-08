@@ -20,12 +20,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import androidx.databinding.BindingAdapter
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
 import app.kitsu.mercerecetas.MainActivity
+import app.kitsu.mercerecetas.database.RecipeDatabase
 
 import app.kitsu.mercerecetas.databinding.FragmentDetailBinding
 
@@ -42,11 +46,14 @@ class DetailFragment : Fragment() {
 
         val application = requireNotNull(activity).application
         val binding = FragmentDetailBinding.inflate(inflater)
+        val dataSource = RecipeDatabase.getInstance(application).recipeIngredientQttyDao
+
         binding.setLifecycleOwner(this)
+
 
         //getting value from safeArgs
         val recipe = DetailFragmentArgs.fromBundle(arguments!!).selectedRecipe
-        val factory = DetailViewModelFactory(recipe, application)
+        val factory = DetailViewModelFactory(recipe,dataSource, application)
 
          viewModel = ViewModelProvider(this,factory).get(DetailViewModel::class.java)
         binding.viewModel = viewModel
@@ -56,6 +63,10 @@ class DetailFragment : Fragment() {
         viewModel.title.observe(viewLifecycleOwner, Observer {
             (activity as MainActivity).supportActionBar?.title = it
         })
+
+
+        val adapter = IngredientsQttyAdapter()
+        binding.ingredientList.adapter = adapter
 
         return binding.root
     }

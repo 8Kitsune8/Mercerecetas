@@ -13,7 +13,7 @@ import app.kitsu.mercerecetas.workers.RecipeDatabaseWorker
 import app.kitsu.mercerecetas.workers.RecipeIngrQttyDatabaseWorker
 
 
-@Database(entities = [Recipe::class, Ingredient::class, RecipeIngredientQuantity::class], version = 1, exportSchema = false)
+@Database(entities = [Recipe::class, Ingredient::class, RecipeIngredientQuantity::class], version = 1, exportSchema = true)
 abstract class RecipeDatabase : RoomDatabase() {
 
     abstract val recipeDatabaseDao: RecipeDatabaseDao

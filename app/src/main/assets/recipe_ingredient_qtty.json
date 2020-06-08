@@ -1,36 +1,43 @@
 [
   {
+    "recIngQttyId" : 1,
     "recipeId": "1",
     "ingredientName": "Patata",
     "ingredientQtty": 6
   },
   {
-    "recipeName": "1",
+    "recIngQttyId" : 2,
+    "recipeId": "1",
     "ingredientName": "Huevo",
     "ingredientQtty": 6
   },
   {
-    "recipeName": "1",
+    "recIngQttyId" : 3,
+    "recipeId": "1",
     "ingredientName": "Cebolla",
     "ingredientQtty": 1
   },
   {
-    "recipeName": "43",
+    "recIngQttyId" : 4,
+    "recipeId": "43",
     "ingredientName": "Espirales",
     "ingredientQtty": 500
   },
   {
-    "recipeName": "43",
+    "recIngQttyId" : 5,
+    "recipeId": "43",
     "ingredientName": "Espirales",
     "ingredientQtty": 500
   },
   {
-    "recipeName": "43",
+    "recIngQttyId" : 6,
+    "recipeId": "43",
     "ingredientName": "Nata",
     "ingredientQtty": 1
   },
   {
-    "recipeName": "43",
+    "recIngQttyId" : 7,
+    "recipeId": "43",
     "ingredientName": "Bacon",
     "ingredientQtty": 150
   }

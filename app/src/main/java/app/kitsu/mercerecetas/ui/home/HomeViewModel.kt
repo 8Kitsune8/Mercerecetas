@@ -13,7 +13,7 @@ class HomeViewModel(
 
 
     /**
-     * Hold a reference to SleepDatabase via SleepDatabaseDao.
+     * Hold a reference to RecipeDatabase via RecipeDatabaseDao.
      */
     val database = dataSource
 
