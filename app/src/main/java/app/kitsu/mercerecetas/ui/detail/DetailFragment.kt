@@ -68,6 +68,7 @@ class DetailFragment : Fragment() {
         val adapter = IngredientsQttyAdapter()
         binding.ingredientList.adapter = adapter
 
+
         return binding.root
     }
 }

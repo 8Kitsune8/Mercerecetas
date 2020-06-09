@@ -58,7 +58,7 @@ class HomeViewModel(
            liveDataMerger.setValue(value) } )
 
        uiScope.launch {
-         //  generateBackup()
+           generateBackup()
        }
    }
 

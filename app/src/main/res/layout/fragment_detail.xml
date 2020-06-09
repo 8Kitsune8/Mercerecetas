@@ -30,13 +30,16 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
         tools:context=".DetailFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp">
 
@@ -110,13 +113,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:layout_marginBottom="?attr/actionBarSize"
+                android:layout_marginBottom="@dimen/text_padding"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:listIngredientsData="@{viewModel.ingredients}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:spanCount="2"
+
 
                 tools:listitem="@layout/list_ingredients_qtty"
                 />

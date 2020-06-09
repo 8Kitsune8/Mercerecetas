@@ -4,7 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+
 import app.kitsu.mercerecetas.utils.DATABASE_NAME
+import app.kitsu.mercerecetas.workers.IngredientDatabaseWorker
+import app.kitsu.mercerecetas.workers.RecipeDatabaseWorker
+import app.kitsu.mercerecetas.workers.RecipeIngrQttyDatabaseWorker
 
 
 @Database(entities = [Recipe::class, Ingredient::class, RecipeIngredientQuantity::class], version = 1, exportSchema = true)
@@ -37,7 +44,7 @@ abstract class RecipeDatabase : RoomDatabase() {
                 .createFromAsset(DATABASE_NAME)
                 .build()
 
-            /*   return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
+             /*  return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
                .addCallback(object : RoomDatabase.Callback() {
                    override fun onCreate(db: SupportSQLiteDatabase) {
                        super.onCreate(db)
