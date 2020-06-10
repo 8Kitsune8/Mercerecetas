@@ -56,13 +56,9 @@ fun TextView.setRecipeDurationFormatted(item: Int) {
 
 @RequiresApi(Build.VERSION_CODES.N)
 @BindingAdapter("ingredientQttyFormatted")
-fun TextView.setIngredientQttyFormatted(item: Int) {
-    item?.let {
-        val formText = context.resources.getString(
-            R.string.display_recipe_time,
-            convertDurationToFormatted(it, context.resources)
-        )
-        text = Html.fromHtml(formText, Html.FROM_HTML_MODE_LEGACY)
+fun TextView.setIngredientQttyFormatted(recIngQtty: RecipeIngredientQuantity) {
+    if (recIngQtty != null){
+        text = "${recIngQtty.ingredientQtty}  ${recIngQtty.ingredient?.type}"
     }
 }
 

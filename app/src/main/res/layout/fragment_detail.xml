@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="?attr/actionBarSize"
+        android:background="@color/primaryColor"
         tools:context=".DetailFragment">
 
         <LinearLayout
@@ -47,6 +48,7 @@
                 android:id="@+id/main_photo_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_side_margin"
                 android:adjustViewBounds="true"
                 android:scaleType="center"
                 app:imageFromUri="@{viewModel.selectedRecipe.imgUri}"
@@ -65,7 +67,7 @@
                     android:paddingBottom="@dimen/text_padding"
                     android:text="@{viewModel.displayRecipeMode}"
                     android:textAlignment="textStart"
-                    android:textColor="#de000000"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="@dimen/detail_subtitle"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -83,11 +85,10 @@
                     android:id="@+id/recipe_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:gravity="end"
                     android:paddingBottom="@dimen/text_padding"
                     android:textAlignment="textEnd"
-                    android:textColor="#de000000"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="@dimen/detail_subtitle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -103,6 +104,7 @@
                 android:text="@string/ingredients_title"
                 android:paddingTop="@dimen/text_padding"
                 android:paddingBottom="@dimen/text_padding"
+                android:textColor="@color/primaryTextColor"
                 app:layout_constraintEnd_toStartOf="@+id/recipe_time"
                 app:layout_constraintStart_toStartOf="@+id/recipe_mode"
                 app:layout_constraintTop_toBottomOf="@id/recipe_mode"
@@ -112,14 +114,13 @@
                 android:id="@+id/ingredient_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
                 android:layout_marginBottom="@dimen/text_padding"
-
+                android:background="@color/primaryLightColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:listIngredientsData="@{viewModel.ingredients}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:spanCount="2"
+
 
 
                 tools:listitem="@layout/list_ingredients_qtty"

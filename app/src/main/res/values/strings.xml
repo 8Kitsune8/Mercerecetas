@@ -17,6 +17,7 @@
     <string name="pastas_item">Pastas</string>
     <string name="legumbres_item">Legumbres</string>
     <string name="ingredients_title">Ingredientes</string>
+    <string name="list_dots">..........................</string>
 
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->

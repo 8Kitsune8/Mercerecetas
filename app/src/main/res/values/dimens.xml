@@ -10,4 +10,5 @@
     <dimen name="text_padding">5dp</dimen>
     <dimen name="item_text_size">19dp</dimen>
     <dimen name="detail_subtitle">20sp</dimen>
+    <dimen name="text_size">20sp</dimen>
 </resources>
