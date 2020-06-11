@@ -16,12 +16,6 @@ import kotlinx.android.synthetic.main.list_ingredients_qtty.view.*
 
 class IngredientsQttyAdapter() : ListAdapter<RecipeIngredientQuantity,IngredientsQttyAdapter.IngredientQttyViewHolder>(IngrQttyDiffCallback) {
 
-  /*  var data = listOf<RecipeIngredientQuantity>()
-        set(value){
-            field = value
-            notifyDataSetChanged()
-        }*/
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -30,8 +24,6 @@ class IngredientsQttyAdapter() : ListAdapter<RecipeIngredientQuantity,Ingredient
     }
 
     override fun onBindViewHolder(holder: IngredientQttyViewHolder, position: Int) {
-
-     //   val recIngrQtty = data[position]
         val recIngrQtty = getItem(position)
        holder.bind(recIngrQtty)
     }
@@ -53,33 +45,24 @@ class IngredientsQttyAdapter() : ListAdapter<RecipeIngredientQuantity,Ingredient
             return oldItem.recIngQttyId == newItem.recIngQttyId
         }
 
-
-
     }
 
-    class IngredientQttyViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class IngredientQttyViewHolder private constructor(val binding: ListIngredientsQttyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recIngrQtty: RecipeIngredientQuantity){
-            itemView.ingredient_name.text = recIngrQtty.ingredient?.name.toString()
-            itemView.ingredient_qtty.text = "${recIngrQtty.ingredientQtty} ${recIngrQtty.ingredient?.type}"
+            binding.recipeIngredientsQtty = recIngrQtty
+            binding.executePendingBindings()
         }
 
-        val name: TextView = itemView.findViewById(R.id.ingredient_name)
-        val qtty: TextView = itemView.findViewById(R.id.ingredient_qtty)
 
         companion object {
          fun from(parent: ViewGroup): IngredientQttyViewHolder {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            return IngredientQttyViewHolder(
-                layoutInflater.inflate(
-                    R.layout.list_ingredients_qtty,
-                    parent, false
-                )
-            )
+           val layoutInflater = LayoutInflater.from(parent.context)
+
+             // when inflating, h params ", parent, false" ARE HIGHLY IMPORTANT to maintain the layout as expected
+             val binding = ListIngredientsQttyBinding.inflate(layoutInflater, parent, false)
+             return  IngredientQttyViewHolder(binding)
         }
     }
 }
 
- /*   override fun getItemCount(): Int {
-       return data.size
-    }*/
 }
