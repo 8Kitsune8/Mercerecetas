@@ -26,17 +26,14 @@ class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.Ing
         parent: ViewGroup,
         viewType: Int
     ): IngredientQttyViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return IngredientQttyViewHolder(layoutInflater.inflate(R.layout.list_ingredients_qtty,
-            parent, false) )
+        return IngredientQttyViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: IngredientQttyViewHolder, position: Int) {
 
         val recIngrQtty = data[position]
-        holder.itemView.ingredient_name.text = recIngrQtty.ingredient?.name.toString()
-        holder.itemView.ingredient_qtty.text = recIngrQtty.ingredientQtty.toString()
-       // holder.bind(recIngrQtty)
+
+       holder.bind(recIngrQtty)
     }
 
     //different way to use DiffCallback instead creating a new class:
@@ -56,18 +53,31 @@ class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.Ing
             return oldItem.recIngQttyId == newItem.recIngQttyId
         }
 
+
+
     }
 
-    class IngredientQttyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-       /* fun bind(recIngrQtty: RecipeIngredientQuantity){
-
-        }*/
+    class IngredientQttyViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(recIngrQtty: RecipeIngredientQuantity){
+            itemView.ingredient_name.text = recIngrQtty.ingredient?.name.toString()
+            itemView.ingredient_qtty.text = "${recIngrQtty.ingredientQtty} ${recIngrQtty.ingredient?.type}"
+        }
 
         val name: TextView = itemView.findViewById(R.id.ingredient_name)
         val qtty: TextView = itemView.findViewById(R.id.ingredient_qtty)
 
-
+        companion object {
+         fun from(parent: ViewGroup): IngredientQttyViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            return IngredientQttyViewHolder(
+                layoutInflater.inflate(
+                    R.layout.list_ingredients_qtty,
+                    parent, false
+                )
+            )
+        }
     }
+}
 
     override fun getItemCount(): Int {
        return data.size
