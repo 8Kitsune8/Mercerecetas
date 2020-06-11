@@ -14,13 +14,13 @@ import app.kitsu.mercerecetas.databinding.ListIngredientsQttyBinding
 import app.kitsu.mercerecetas.ui.home.RecipeAdapter
 import kotlinx.android.synthetic.main.list_ingredients_qtty.view.*
 
-class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.IngredientQttyViewHolder>() {
+class IngredientsQttyAdapter() : ListAdapter<RecipeIngredientQuantity,IngredientsQttyAdapter.IngredientQttyViewHolder>(IngrQttyDiffCallback) {
 
-    var data = listOf<RecipeIngredientQuantity>()
+  /*  var data = listOf<RecipeIngredientQuantity>()
         set(value){
             field = value
             notifyDataSetChanged()
-        }
+        }*/
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,8 +31,8 @@ class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.Ing
 
     override fun onBindViewHolder(holder: IngredientQttyViewHolder, position: Int) {
 
-        val recIngrQtty = data[position]
-
+     //   val recIngrQtty = data[position]
+        val recIngrQtty = getItem(position)
        holder.bind(recIngrQtty)
     }
 
@@ -79,7 +79,7 @@ class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.Ing
     }
 }
 
-    override fun getItemCount(): Int {
+ /*   override fun getItemCount(): Int {
        return data.size
-    }
+    }*/
 }
