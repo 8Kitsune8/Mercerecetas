@@ -73,13 +73,19 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Modo: Vapor" />
 
-                <View
+                <TextView
                     android:id="@+id/list_divider"
-                    style="@style/Divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/detail_subtitle"
+                    android:fontFamily="sans-serif"
+                    android:text="|"
+                    android:textColor="@color/secondaryColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></View>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:fontFamily="sans-serif"/>
+
 
                 <TextView
                     android:id="@+id/recipe_time"
@@ -110,6 +116,7 @@
                 app:layout_constraintTop_toBottomOf="@id/recipe_mode"
                 />
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ingredient_list"
                 android:layout_width="match_parent"
@@ -120,8 +127,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:listIngredientsData="@{viewModel.ingredients}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
-
 
                 tools:listitem="@layout/list_ingredients_qtty"
                 />

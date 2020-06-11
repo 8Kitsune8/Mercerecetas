@@ -81,8 +81,8 @@ fun bindRecyclerView(recyclerView: RecyclerView, properties: List<Recipe>?) {
 fun bindIngrRecyclerView(recyclerView: RecyclerView, ingredients: List<RecipeIngredientQuantity>?){
     val adapter = recyclerView.adapter as IngredientsQttyAdapter
     if (ingredients != null) {
-        // adapter.data = properties
-        adapter.submitList(ingredients)
+         adapter.data = ingredients
+        //adapter.submitList(ingredients)
     }
 }
 

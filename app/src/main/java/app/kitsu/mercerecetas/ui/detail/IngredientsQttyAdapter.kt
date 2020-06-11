@@ -1,27 +1,42 @@
 package app.kitsu.mercerecetas.ui.detail
 
 import android.view.LayoutInflater
+import android.view.TextureView
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.RecipeIngredientQuantity
 import app.kitsu.mercerecetas.databinding.ListIngredientsQttyBinding
+import app.kitsu.mercerecetas.ui.home.RecipeAdapter
+import kotlinx.android.synthetic.main.list_ingredients_qtty.view.*
 
-class IngredientsQttyAdapter : ListAdapter<RecipeIngredientQuantity,IngredientsQttyAdapter.IngredientQttyViewHolder>(IngrQttyDiffCallback) {
+class IngredientsQttyAdapter() : RecyclerView.Adapter<IngredientsQttyAdapter.IngredientQttyViewHolder>() {
 
+    var data = listOf<RecipeIngredientQuantity>()
+        set(value){
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): IngredientQttyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return IngredientQttyViewHolder(ListIngredientsQttyBinding.inflate(layoutInflater))
+        return IngredientQttyViewHolder(layoutInflater.inflate(R.layout.list_ingredients_qtty,
+            parent, false) )
     }
 
     override fun onBindViewHolder(holder: IngredientQttyViewHolder, position: Int) {
-        val recIngrQtty = getItem(position)
-        holder.bind(recIngrQtty)
+
+        val recIngrQtty = data[position]
+        holder.itemView.ingredient_name.text = recIngrQtty.ingredient?.name.toString()
+        holder.itemView.ingredient_qtty.text = recIngrQtty.ingredientQtty.toString()
+       // holder.bind(recIngrQtty)
     }
 
     //different way to use DiffCallback instead creating a new class:
@@ -43,11 +58,18 @@ class IngredientsQttyAdapter : ListAdapter<RecipeIngredientQuantity,IngredientsQ
 
     }
 
-    class IngredientQttyViewHolder(private var binding: ListIngredientsQttyBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(recIngrQtty: RecipeIngredientQuantity){
-            binding.recipeIngredientsQtty = recIngrQtty
-            binding.executePendingBindings()
-        }
+    class IngredientQttyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+       /* fun bind(recIngrQtty: RecipeIngredientQuantity){
 
+        }*/
+
+        val name: TextView = itemView.findViewById(R.id.ingredient_name)
+        val qtty: TextView = itemView.findViewById(R.id.ingredient_qtty)
+
+
+    }
+
+    override fun getItemCount(): Int {
+       return data.size
     }
 }
