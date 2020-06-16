@@ -1,10 +1,13 @@
 package app.kitsu.mercerecetas.ui.home
 
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +17,7 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StableIdKeyProvider
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import app.kitsu.mercerecetas.MainActivity
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.database.RecipeDatabase
@@ -93,7 +97,34 @@ class HomeFragment : Fragment() {
         tracker?.addObserver(
             object: SelectionTracker.SelectionObserver<Long>() {
                 override fun onSelectionChanged() {
+                    var title: String
                     val nItems:Int? = tracker?.selection?.size()
+
+                    if(nItems!=null && nItems > 0) {
+
+                        title = "$nItems items seleccionados"
+
+                        // Change title and color of action bar
+                       // (activity as MainActivity).supportActionBar?.title = title
+                        (activity as MainActivity).supportActionBar?.setBackgroundDrawable(
+                            context?.let { ContextCompat.getColor(it,R.color.secondaryDarkColor) }?.let {
+                                ColorDrawable(
+                                    it
+                                )
+                            })
+                    } else {
+
+                        // Reset color and title to default values
+
+                        title = "Recetas"
+                        (activity as MainActivity).supportActionBar?.setBackgroundDrawable(
+                            context?.let { ContextCompat.getColor(it,R.color.primaryColor) }?.let {
+                                ColorDrawable(
+                                    it
+                                )
+                            })
+                    }
+                    (activity as MainActivity).supportActionBar?.title = title
                 }
             })
 

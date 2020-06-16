@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.databinding.ListItemRecipeBinding
+import kotlin.coroutines.coroutineContext
 
 class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe,RecipeAdapter.ViewHolder>(RecipeDiffCallback()), Filterable {
 
@@ -75,11 +77,12 @@ class RecipeAdapter(private val onClickListener: OnClickListener) : ListAdapter<
         val parent = holder.itemView as RelativeLayout
         if(tracker!!.isSelected(getItem(position).recipeId)) {
             parent.background = ColorDrawable(
-                Color.parseColor("#80deea")
+               // Color.parseColor("#80deea")
+                getColor(parent.context,R.color.primaryColor)
             )
         } else {
             // Reset color to white if not selected
-            parent.background = ColorDrawable(Color.parseColor("#ffa726"))
+            parent.background = ColorDrawable(getColor(parent.context,R.color.secondaryColor))
         }
 
         holder.itemView.setOnClickListener{
