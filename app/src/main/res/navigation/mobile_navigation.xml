@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_shoppingFragment"
+            app:destination="@id/shoppingFragment" />
     </fragment>
 
     <fragment
@@ -33,5 +36,13 @@
         tools:layout="@layout/fragment_detail">
         <argument android:name="selected_recipe"
             app:argType="app.kitsu.mercerecetas.database.Recipe"/>
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="app.kitsu.mercerecetas.ui.shopping.ShoppingFragment"
+        android:label="ShoppingFragment" >
+        <argument
+            android:name="recipesId"
+            app:argType="long[]" />
     </fragment>
 </navigation>

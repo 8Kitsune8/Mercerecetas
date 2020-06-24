@@ -18,7 +18,7 @@ data class RecipeIngredientQuantity (
 
 
     @ColumnInfo(name = "ingredient_quantity")
-    var ingredientQtty: Int = 0,
+    var ingredientQtty: Float = 0f,
 
     @Embedded(prefix = "ing_") val ingredient: Ingredient?
 

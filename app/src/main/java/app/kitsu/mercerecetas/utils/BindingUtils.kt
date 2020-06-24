@@ -58,7 +58,13 @@ fun TextView.setRecipeDurationFormatted(item: Int) {
 @BindingAdapter("ingredientQttyFormatted")
 fun TextView.setIngredientQttyFormatted(recIngQtty: RecipeIngredientQuantity) {
     if (recIngQtty != null){
-        text = "${recIngQtty.ingredientQtty}  ${recIngQtty.ingredient?.type}"
+       /* text = context.resources.getString(
+            R.string.display_ingr_qtty,recIngQtty.ingredientQtty,recIngQtty.ingredient?.type)*/
+        val ingrQtty = if(recIngQtty.ingredientQtty.toString().endsWith(".0"))
+            recIngQtty.ingredientQtty.toInt()
+        else recIngQtty.ingredientQtty
+
+        text = "${ingrQtty}  ${recIngQtty.ingredient?.type}"
     }
 }
 

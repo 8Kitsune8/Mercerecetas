@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.widget.AdapterView
+import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -16,6 +18,7 @@ import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StableIdKeyProvider
 import androidx.recyclerview.selection.StorageStrategy
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.kitsu.mercerecetas.MainActivity
 import app.kitsu.mercerecetas.R
@@ -31,6 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: RecipeAdapter
     private lateinit var homeViewModel: HomeViewModel
     private var tracker: SelectionTracker<Long>? = null
+    private var actionMode: ActionMode? = null
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -93,16 +97,15 @@ class HomeFragment : Fragment() {
         ).build()
 
         adapter.setTracker(tracker)
-
-        tracker?.addObserver(
+       tracker?.addObserver(
             object: SelectionTracker.SelectionObserver<Long>() {
                 override fun onSelectionChanged() {
                     var title: String
                     val nItems:Int? = tracker?.selection?.size()
 
                     if(nItems!=null && nItems > 0) {
-
-                        title = "$nItems items seleccionados"
+                        actionMode = activity?.startActionMode(actionModeCallbacks)
+                    /*    title = "$nItems items seleccionados"
 
                         // Change title and color of action bar
                        // (activity as MainActivity).supportActionBar?.title = title
@@ -111,27 +114,65 @@ class HomeFragment : Fragment() {
                                 ColorDrawable(
                                     it
                                 )
-                            })
+                            })*/
                     } else {
 
                         // Reset color and title to default values
 
-                        title = "Recetas"
+                  /*      title = "Recetas"
                         (activity as MainActivity).supportActionBar?.setBackgroundDrawable(
                             context?.let { ContextCompat.getColor(it,R.color.primaryColor) }?.let {
                                 ColorDrawable(
                                     it
                                 )
-                            })
+                            })*/
                     }
-                    (activity as MainActivity).supportActionBar?.title = title
+                  //  (activity as MainActivity).supportActionBar?.title = title
                 }
             })
 
 
         setHasOptionsMenu(true)
 
+        //registerForContextMenu(binding.recipeList)
+
+   /*     binding.recipeList.setOnLongClickListener { view ->
+            // Called when the user long-clicks on someView
+            when (actionMode) {
+                null -> {
+                    // Start the CAB using the ActionMode.Callback defined above
+
+                    view.isSelected = true
+                    true
+                }
+                else -> false
+            }
+        }*/
+
+
+
         return binding.root
+    }
+
+    private val actionModeCallbacks: ActionMode.Callback = object : ActionMode.Callback {
+        override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            menu?.add("Generar Lista")
+            return true
+        }
+
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
+        }
+
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            val selectedItems =  adapter.selectedItems
+            val recipeIds: LongArray = selectedItems.flatMap { (rId) -> listOf(rId)}.toLongArray()
+            this@HomeFragment.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToShoppingFragment(recipeIds))
+            mode?.finish()
+            return true
+        }
+
+        override fun onDestroyActionMode(mode: ActionMode?) {}
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -180,5 +221,28 @@ class HomeFragment : Fragment() {
         if(outState != null)
             tracker?.onSaveInstanceState(outState)
     }
+
+
+/*    override fun onCreateContextMenu(
+        menu: ContextMenu,
+        v: View,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        val inflater: MenuInflater = (activity as MainActivity).menuInflater
+        inflater.inflate(R.menu.create_shopping_list_menu, menu)
+
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
+        return when (item.itemId) {
+            R.id.create_shopping_list -> {
+             //   this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToShoppingFragment(recipes))
+                true
+            }
+            else -> super.onContextItemSelected(item)
+        }
+    }*/
 
 }
