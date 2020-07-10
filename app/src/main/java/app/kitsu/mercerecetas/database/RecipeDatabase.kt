@@ -40,11 +40,10 @@ abstract class RecipeDatabase : RoomDatabase() {
         // Create and pre-populate the database. See this article for more details:
         // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): RecipeDatabase {
-          /*  return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
+            return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
                 .createFromAsset(DATABASE_NAME)
                 .build()
-*/
-               return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
+/*               return Room.databaseBuilder(context, RecipeDatabase::class.java, DATABASE_NAME)
                .addCallback(object : RoomDatabase.Callback() {
                    override fun onCreate(db: SupportSQLiteDatabase) {
                        super.onCreate(db)
@@ -56,7 +55,7 @@ abstract class RecipeDatabase : RoomDatabase() {
                        WorkManager.getInstance(context).enqueue(requestQtty)
                     }
                 })
-                .build()
+                .build()*/
         }
     }
 }

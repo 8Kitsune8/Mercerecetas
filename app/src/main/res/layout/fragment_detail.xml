@@ -27,7 +27,7 @@
             type="app.kitsu.mercerecetas.ui.detail.DetailViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="?attr/actionBarSize"
@@ -123,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/text_padding"
                 android:background="@color/primaryLightColor"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:listIngredientsData="@{viewModel.ingredients}"
@@ -139,5 +140,5 @@
 <!--                tools:text="Tomate"/>-->
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>
