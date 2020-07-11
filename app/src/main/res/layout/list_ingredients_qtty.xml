@@ -13,6 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/card_side_padding"
+        android:paddingEnd="@dimen/text_padding"
+        android:paddingRight="@dimen/text_padding"
+        android:paddingStart="@dimen/text_padding"
+        android:paddingLeft="@dimen/text_padding"
         android:orientation="horizontal">
 
         <TextView
@@ -30,7 +34,7 @@
             tools:text="Patata"
             tools:textColor="@color/secondaryTextColor" />
 
-<!--        <TextView
+        <TextView
             android:id="@+id/ingr_dots"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +49,7 @@
             app:layout_constraintStart_toEndOf="@+id/ingredient_name"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/list_dots"
-            tools:textColor="@color/secondaryTextColor" />-->
+            tools:textColor="@color/secondaryTextColor" />
 
         <TextView
             android:id="@+id/ingredient_qtty"

@@ -29,7 +29,7 @@ class DetailViewModel(recipe: Recipe,dataSource: RecipeIngredientQttyDao, app: A
     val title: LiveData<String>
         get() = _title
 
-    lateinit var ingredients: LiveData<List<RecipeIngredientQuantity>>
+    var ingredients: LiveData<List<RecipeIngredientQuantity>>
  /*   private val _ingredients = MutableLiveData<List<RecipeIngredientQuantity>>()
     val ingredients: LiveData<List<RecipeIngredientQuantity>>
     get() = _ingredients*/

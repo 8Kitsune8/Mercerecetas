@@ -123,6 +123,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/text_padding"
                 android:background="@color/primaryLightColor"
+                android:paddingEnd="@dimen/text_padding"
+                android:paddingRight="@dimen/text_padding"
+                android:paddingStart="@dimen/card_side_padding"
+                android:paddingLeft="@dimen/card_side_padding"
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -130,7 +134,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
                 tools:listitem="@layout/list_ingredients_qtty"
-                />
+                 />
 
 <!--            <TextView-->
 <!--                android:id="@+id/ingredient_name"-->
