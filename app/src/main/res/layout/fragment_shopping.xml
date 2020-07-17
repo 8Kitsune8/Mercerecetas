@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
+ <!--   <TextView
         android:id="@+id/shopping_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,23 +21,28 @@
         android:text="@string/ingredients_title"
         android:textAppearance="@style/TextAppearance.SubTitle"
         android:textColor="@color/secondaryTextColor"
+        android:background="@color/primaryLightColor"
 
         app:layout_constraintBottom_toTopOf="@id/shopping_list"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        />-->
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shopping_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primaryLightColor"
+        android:background="@color/secondaryLightColor"
+        android:textColor="@color/secondaryTextColor"
+        android:paddingStart="@dimen/text_padding"
+        android:paddingEnd="@dimen/text_padding"
 
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/shopping_title"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:listIngredientsData="@{viewModel.ingredients}"
 
-        tools:listitem="@layout/list_ingredients_qtty" />
+        tools:listitem="@layout/list_ingredients_qtty"
+        android:paddingLeft="@dimen/card_side_padding" />
 </LinearLayout>
     </layout>

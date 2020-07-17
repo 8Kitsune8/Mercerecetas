@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Mercerecetas</string>
     <string name="title_home">Recetas</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_add_recipe">Nueva Receta</string>
     <string name="title_notifications">Notifications</string>
     <string name="recipe_image_desc">recipe image</string>
     <string name="display_recipe_time">&lt;b>Tiempo:&lt;/b>%s</string>
@@ -17,7 +17,8 @@
     <string name="pastas_item">Pastas</string>
     <string name="legumbres_item">Legumbres</string>
     <string name="ingredients_title">Ingredientes</string>
-    <string name="list_dots">..............</string>
+    <string name="list_dots">.............</string>
+    <string name="title_shop_fragment">Lista de la compra</string>
 
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->
