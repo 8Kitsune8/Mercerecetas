@@ -9,19 +9,175 @@
             type="app.kitsu.mercerecetas.ui.addrecipe.AddRecipeViewModel" />
     </data>
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <LinearLayout
+        android:id="@+id/LinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="@{dashboardViewModel.text}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/general_margin"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:scrollbars="vertical"
+        android:orientation="vertical"
+        tools:context=".AddRecipeFragment">
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:baselineAligned="true"
+            android:visibility="visible"
+            android:layout_marginBottom="8dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:helperTextEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputNewRecipeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nombre_receta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/RadioGroupType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+
+            android:text="@string/tipo"
+            app:layout_constraintBottom_toTopOf="@+id/recipeTypeRadioGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutTitle" />
+
+        <RadioGroup
+            android:id="@+id/recipeTypeRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RadioGroupTitle">
+
+            <RadioButton
+                android:id="@+id/radioButtonMeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carne" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pescado" />
+
+            <RadioButton
+                android:id="@+id/radioButtonPasta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pasta" />
+
+            <RadioButton
+                android:id="@+id/radioButtonRice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/arroz" />
+
+            <RadioButton
+                android:id="@+id/radioButtonVeget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vegetales" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/RadioGroupMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+
+            android:text="@string/modo"
+            app:layout_constraintBottom_toTopOf="@+id/recipeModeRadioGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutTitle" />
+
+
+        <RadioGroup
+            android:id="@+id/recipeModeRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RadioGroupTitle">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vapor" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cazuela" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/potaje" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/arroz" />
+
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pastel" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/tiempo"
+            android:ems="10"
+            android:hint="@string/tiempo_coc_minutos"
+            android:inputType="time" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="@dimen/general_margin"
+            android:text="@string/crear" />
+    </LinearLayout>
 </layout>

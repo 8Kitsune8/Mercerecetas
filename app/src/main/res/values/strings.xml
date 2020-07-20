@@ -19,6 +19,21 @@
     <string name="ingredients_title">Ingredientes</string>
     <string name="list_dots">.............</string>
     <string name="title_shop_fragment">Lista de la compra</string>
+    <string name="nombre_receta">Nombre</string>
+    <string name="tipo">Tipo:</string>
+    <string name="carne">Carne</string>
+    <string name="pescado">Pescado</string>
+    <string name="pasta">Pasta</string>
+    <string name="arroz">Arroz</string>
+    <string name="vegetales">Vegetales</string>
+    <string name="modo">Modo:</string>
+    <string name="vapor">Vapor</string>
+    <string name="cazuela">Cazuela</string>
+    <string name="potaje">Potaje</string>
+    <string name="pastel">Pastel</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="tiempo_coc_minutos">Tiempo de cocción (minutos)</string>
+    <string name="crear">Crear</string>
 
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->
