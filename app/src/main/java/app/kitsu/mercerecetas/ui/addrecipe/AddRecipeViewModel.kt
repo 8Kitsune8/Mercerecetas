@@ -1,27 +1,34 @@
 package app.kitsu.mercerecetas.ui.addrecipe
 
 import android.app.Application
+
 import android.view.View
-import android.widget.RadioButton
+
 import android.widget.RadioGroup
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
 import app.kitsu.mercerecetas.R
 import app.kitsu.mercerecetas.database.Recipe
 import app.kitsu.mercerecetas.database.RecipeDatabaseDao
+import app.kitsu.mercerecetas.database.RecipeFilter
 import kotlinx.android.synthetic.main.fragment_add_recipe.view.*
 import kotlinx.coroutines.*
 
 class AddRecipeViewModel(
     dataSource: RecipeDatabaseDao,
     application: Application
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     /**
      * Hold a reference to RecipeDatabase via RecipeIngredientQttyDao.
      */
     val database = dataSource
+
+
+    val app = application
 
     /** Coroutine variables */
 
@@ -51,31 +58,31 @@ class AddRecipeViewModel(
 
     fun createRecipe(view: View){
         var recipe : Recipe = Recipe()
-        view?.let { recipe.name = view.textInputNewRecipeTitle.text.toString()
-            val typeId = view.recipeTypeRadioGroup as RadioGroup
+        view?.let { recipe.name = it.textInputNewRecipeTitle.text.toString()
+            val typeId = it.recipeTypeRadioGroup as RadioGroup
 
             recipe.type = when(typeId.checkedRadioButtonId) {
-                R.id.radioButtonMeat -> "meat"
-                R.id.radioButtonFish -> "fish"
-                R.id.radioButtonRice -> "rice"
-                R.id.radioButtonPasta -> "pasta"
-                R.id.radioButtonVeget -> "vegetables"
+                R.id.radioButtonMeat -> RecipeFilter.SHOW_MEAT.value
+                R.id.radioButtonFish -> RecipeFilter.SHOW_FISH.value
+                R.id.radioButtonRice -> RecipeFilter.SHOW_RICE.value
+                R.id.radioButtonPasta -> RecipeFilter.SHOW_PASTA.value
+                R.id.radioButtonVeget -> RecipeFilter.SHOW_VEGETABLES.value
 
                 else -> "meat"
 
             }
-            val modeId = view.recipeModeRadioGroup as RadioGroup
+            val modeId = it.recipeModeRadioGroup as RadioGroup
             recipe.cookMode = when(modeId.checkedRadioButtonId) {
-                R.id.radioButtonSteam -> "Vapor"
-                R.id.radioButtonCasserole -> "Cazuela"
-                R.id.radioButtonPottage -> "Potaje"
-                R.id.radioBTypeRice -> "Rice"
-                R.id.radioButtonCake -> "Pastel"
+                R.id.radioButtonSteam ->  app.applicationContext.resources.getString(R.string.vapor)
+                R.id.radioButtonCasserole -> app.resources.getString(R.string.cazuela)
+                R.id.radioButtonPottage -> app.resources.getString(R.string.potaje)
+                R.id.radioBTypeRice -> app.resources.getString(R.string.arroz)
+                R.id.radioButtonCake -> app.resources.getString(R.string.pastel)
 
-                else -> "Vapor"
+                else -> R.string.vapor.toString()
 
             }
-            recipe.time = view.editTextTime.text.toString().toInt()
+            recipe.time = it.editTextTime.text.toString().toInt()
 
             uiScope.launch {
                 setRecipes(recipe)

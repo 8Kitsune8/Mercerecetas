@@ -35,6 +35,9 @@
     <string name="tiempo_coc_minutos">Tiempo de cocción (minutos)</string>
     <string name="crear">Crear</string>
 
+    <!-- database strings -->
+
+
 </resources>
 <!--<string name="display_recipe_mode">Modo: %s</string>-->
     <!--    <string name="display_recipe_mode">&lt;b>Modo:&lt;/b>%s</string>-->
