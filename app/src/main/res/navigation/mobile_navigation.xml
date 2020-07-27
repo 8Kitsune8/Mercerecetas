@@ -19,10 +19,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_addrecipe"
         android:name="app.kitsu.mercerecetas.ui.addrecipe.AddRecipeFragment"
         android:label="@string/title_add_recipe"
-        tools:layout="@layout/fragment_add_recipe" />
+        tools:layout="@layout/fragment_add_recipe" >
+        <action
+            android:id="@+id/action_navigation_addrecipe_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"

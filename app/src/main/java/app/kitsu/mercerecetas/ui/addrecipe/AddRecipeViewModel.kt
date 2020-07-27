@@ -5,6 +5,7 @@ import android.app.Application
 import android.view.View
 
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -50,13 +51,27 @@ class AddRecipeViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is add recipe Fragment"
+
+    private val _navigateToHome = MutableLiveData<Boolean>()
+    val navigateToHome: LiveData<Boolean>
+        get() = _navigateToHome
+
+
+    fun displayHome() {
+        _navigateToHome.value = true
     }
-    val text: LiveData<String> = _text
 
 
-    fun createRecipe(view: View){
+    fun displayHomeComplete() {
+        _navigateToHome.value = false
+    }
+
+    fun onRecipeCreated() {
+        Toast.makeText(app,"Receta Creada!", Toast.LENGTH_LONG).show()
+        displayHome()
+    }
+
+    fun createRecipe(view: View) {
         var recipe : Recipe = Recipe()
         view?.let { recipe.name = it.textInputNewRecipeTitle.text.toString()
             val typeId = it.recipeTypeRadioGroup as RadioGroup
@@ -68,7 +83,7 @@ class AddRecipeViewModel(
                 R.id.radioButtonPasta -> RecipeFilter.SHOW_PASTA.value
                 R.id.radioButtonVeget -> RecipeFilter.SHOW_VEGETABLES.value
 
-                else -> "meat"
+                else -> RecipeFilter.SHOW_MEAT.value
 
             }
             val modeId = it.recipeModeRadioGroup as RadioGroup

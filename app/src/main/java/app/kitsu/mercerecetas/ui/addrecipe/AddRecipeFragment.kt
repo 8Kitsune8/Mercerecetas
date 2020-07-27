@@ -11,8 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import app.kitsu.mercerecetas.R
 
 import app.kitsu.mercerecetas.database.RecipeDatabase
@@ -46,10 +48,15 @@ class AddRecipeFragment : Fragment() {
         binding.addRecipeViewModel = addRecipeViewModel
 
         binding.createButton.setOnClickListener {
-
-                addRecipeViewModel.createRecipe(binding.root)
-
+            addRecipeViewModel.createRecipe(binding.root)
+            addRecipeViewModel.onRecipeCreated()
         }
+
+        addRecipeViewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
+            if (it){ this.findNavController().navigate(AddRecipeFragmentDirections.actionNavigationAddrecipeToNavigationHome())
+                addRecipeViewModel.displayHomeComplete()
+            }
+        })
 
         return binding.root;
     }
