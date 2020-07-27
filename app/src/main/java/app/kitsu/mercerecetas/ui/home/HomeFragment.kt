@@ -200,6 +200,8 @@ class HomeFragment : Fragment() {
                         R.id.show_meat -> RecipeFilter.SHOW_MEAT
                         R.id.show_pasta -> RecipeFilter.SHOW_PASTA
                         R.id.show_rice -> RecipeFilter.SHOW_RICE
+                        R.id.show_vegetables -> RecipeFilter.SHOW_VEGETABLES
+
                         else -> RecipeFilter.SHOW_ALL
                     }
                 )

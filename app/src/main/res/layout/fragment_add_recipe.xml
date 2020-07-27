@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="dashboardViewModel"
+            name="addRecipeViewModel"
             type="app.kitsu.mercerecetas.ui.addrecipe.AddRecipeViewModel" />
     </data>
 
@@ -131,32 +131,32 @@
             app:layout_constraintTop_toBottomOf="@+id/RadioGroupTitle">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButtonSteam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/vapor" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButtonCasserole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cazuela" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButtonPottage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/potaje" />
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/radioBTypeRice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/arroz" />
 
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioButtonCake"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/pastel" />
@@ -173,7 +173,7 @@
             android:inputType="time" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/create_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
