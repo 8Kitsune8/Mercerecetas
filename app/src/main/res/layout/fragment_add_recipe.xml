@@ -170,7 +170,8 @@
             android:contentDescription="@string/tiempo"
             android:ems="10"
             android:hint="@string/tiempo_coc_minutos"
-            android:inputType="time" />
+            android:inputType="number"
+            />
 
         <Button
             android:id="@+id/create_button"

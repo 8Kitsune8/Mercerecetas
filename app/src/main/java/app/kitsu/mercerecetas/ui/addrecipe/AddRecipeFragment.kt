@@ -2,6 +2,7 @@ package app.kitsu.mercerecetas.ui.addrecipe
 
 import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,29 @@ class AddRecipeFragment : Fragment() {
 
         binding.addRecipeViewModel = addRecipeViewModel
 
+        binding.RadioGroupMode.setOnClickListener {
+            if(it != null) {
+                closeKeyBoard()
+            }
+        }
+
+        binding.recipeTypeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            closeKeyBoard()
+        }
+
+
+        binding.recipeModeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            closeKeyBoard()
+        }
+
+        binding.editTextTime.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == KeyEvent.KEYCODE_ENDCALL) {
+                closeKeyBoard()
+                true
+            }
+           else false
+        }
+
         binding.createButton.setOnClickListener {
             addRecipeViewModel.createRecipe(binding.root)
             addRecipeViewModel.onRecipeCreated()
@@ -59,5 +83,14 @@ class AddRecipeFragment : Fragment() {
         })
 
         return binding.root;
+    }
+
+
+    private fun closeKeyBoard() {
+        val view = this.activity?.currentFocus
+        if (view != null) {
+            val imm = this.activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }
