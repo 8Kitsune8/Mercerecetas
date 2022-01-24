@@ -34,6 +34,7 @@
     <string name="tiempo">Tiempo</string>
     <string name="tiempo_coc_minutos">Tiempo de cocción (minutos)</string>
     <string name="crear">Crear</string>
+    <string name="addItem">Add an item</string>
 
     <!-- database strings -->
 

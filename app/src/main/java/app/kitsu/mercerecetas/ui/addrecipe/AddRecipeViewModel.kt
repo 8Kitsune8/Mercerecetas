@@ -1,6 +1,11 @@
 package app.kitsu.mercerecetas.ui.addrecipe
 
 import android.app.Application
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 
 import android.view.View
 
@@ -17,6 +22,10 @@ import app.kitsu.mercerecetas.database.RecipeDatabaseDao
 import app.kitsu.mercerecetas.database.RecipeFilter
 import kotlinx.android.synthetic.main.fragment_add_recipe.view.*
 import kotlinx.coroutines.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddRecipeViewModel(
     dataSource: RecipeDatabaseDao,
@@ -50,6 +59,15 @@ class AddRecipeViewModel(
      */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+
+
+    private val _photoPath = MutableLiveData<String>()
+    val photoPath: LiveData<String>
+        get() = _photoPath
+
+    private val _photoImg = MutableLiveData<Bitmap>()
+    val photoImg: LiveData<Bitmap>
+        get() = _photoImg
 
 
     private val _navigateToHome = MutableLiveData<Boolean>()
@@ -111,4 +129,7 @@ class AddRecipeViewModel(
             database.insert(recipe)
         }
     }
+
+
+
 }

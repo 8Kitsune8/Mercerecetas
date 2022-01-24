@@ -55,7 +55,12 @@ class ShoppingFragment : Fragment() {
         val adapter = IngredientsQttyAdapter()
         binding.shoppingList.adapter = adapter
 
+        binding.fab.setOnClickListener {
+            viewModel.addIngredient()
+        }
 
         return binding.root
     }
+
+
 }

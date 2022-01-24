@@ -1,9 +1,9 @@
 package app.kitsu.mercerecetas
 
+
 import android.Manifest
-
-
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 22
+    val MY_PERMISSIONS_REQUEST_ALL = 22
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +43,12 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.READ_EXTERNAL_STORAGE
             )
             != PackageManager.PERMISSION_GRANTED
+
+            || ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            )
+            != PackageManager.PERMISSION_GRANTED
         ) {
 
             Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT)
@@ -60,8 +66,9 @@ class MainActivity : AppCompatActivity() {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA),
+                    MY_PERMISSIONS_REQUEST_ALL
                 )
 
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
@@ -80,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<String>, grantResults: IntArray
     ) {
         when (requestCode) {
-            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
+            MY_PERMISSIONS_REQUEST_ALL -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     // permission was granted, yay! Do the
@@ -104,6 +111,8 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.nav_host_fragment)
         return navController.navigateUp()
     }
+
+
 }
 
 

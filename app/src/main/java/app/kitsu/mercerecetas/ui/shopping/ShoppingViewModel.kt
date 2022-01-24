@@ -1,6 +1,7 @@
 package app.kitsu.mercerecetas.ui.shopping
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import app.kitsu.mercerecetas.database.RecipeIngredientQttyDao
@@ -23,6 +24,11 @@ class ShoppingViewModel(recipes: LongArray, dataSource: RecipeIngredientQttyDao,
     private  fun getFilteredRecipesIngredients(recipesId: LongArray): LiveData<List<RecipeIngredientQuantity>> {
 
            return database.getFilteredByRecipe(recipesId.toList())
+
+    }
+
+    fun addIngredient()  {
+
 
     }
 }

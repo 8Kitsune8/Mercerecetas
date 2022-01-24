@@ -7,10 +7,10 @@
             name="viewModel"
             type="app.kitsu.mercerecetas.ui.shopping.ShoppingViewModel" />
     </data>
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="@dimen/general_margin">
 
  <!--   <TextView
         android:id="@+id/shopping_title"
@@ -44,5 +44,20 @@
 
         tools:listitem="@layout/list_ingredients_qtty"
         android:paddingLeft="@dimen/card_side_padding" />
-</LinearLayout>
+
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="@string/addItem"
+                android:layout_margin="16dp"
+                android:clickable="true"/>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     </layout>

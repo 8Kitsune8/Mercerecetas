@@ -167,11 +167,35 @@
             android:id="@+id/editTextTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/tiempo"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:ems="10"
             android:hint="@string/tiempo_coc_minutos"
             android:inputType="number"
+            android:importantForAutofill="no" />
+
+
+
+        <ImageView
+            android:id="@+id/recipeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:contentDescription="Imagen Receta"
+
+            app:srcCompat="@android:drawable/ic_menu_camera"
             />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Imágen por defecto (haz foto para cambiar):" />
 
         <Button
             android:id="@+id/create_button"
@@ -180,5 +204,30 @@
             android:layout_gravity="bottom|center"
             android:layout_marginTop="@dimen/general_margin"
             android:text="@string/crear" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/general_margin">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/takePhotoFAB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginStart="@dimen/general_margin"
+            android:layout_marginLeft="@dimen/general_margin"
+            android:layout_marginTop="@dimen/general_margin"
+            android:layout_marginEnd="@dimen/general_margin"
+
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="3:1.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
+
 </layout>
